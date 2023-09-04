@@ -1,0 +1,16 @@
+## Nodeport
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::1b
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::17
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::14
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::1b
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::17
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::14
+
+## Nodeport
+## IMPORTANT!: You should point to the node which is exposing the routed.
+address=/apps.hosted.hypershiftbm.lab/2620:52:0:1306::13
+
+## General
+dhcp-host=aa:aa:aa:aa:04:11,hosted-worker0,[2620:52:0:1306::11]
+dhcp-host=aa:aa:aa:aa:04:12,hosted-worker1,[2620:52:0:1306::12]
+dhcp-host=aa:aa:aa:aa:04:13,hosted-worker2,[2620:52:0:1306::13]

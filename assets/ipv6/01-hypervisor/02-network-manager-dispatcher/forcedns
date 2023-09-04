@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export IP="2620:52:0:1306::1" ## CHANGE THIS!: This is the first IP of the BM IPv6 Network you will deploy into
+export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
+
+if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
+export TMP_FILE=$(mktemp /etc/forcedns_resolv.conf.XXXXXX)
+cp $BASE_RESOLV_CONF $TMP_FILE
+chmod --reference=$BASE_RESOLV_CONF $TMP_FILE
+sed -i -e "s/hypershift.lab//" -e "s/search /& hypershift.lab /" -e "0,/nameserver/s/nameserver/& $IP\n&/" $TMP_FILE
+mv $TMP_FILE /etc/resolv.conf
+fi
+echo "ok"

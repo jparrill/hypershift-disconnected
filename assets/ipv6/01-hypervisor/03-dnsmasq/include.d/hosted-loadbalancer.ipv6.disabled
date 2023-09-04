@@ -1,0 +1,11 @@
+## LoadBalancer (MetalLB)
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::150
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::150
+
+## LoadBalancer (MetalLB)
+address=/apps.hosted.hypershiftbm.lab/2620:52:0:1306::151
+
+## General
+dhcp-host=aa:aa:aa:aa:04:11,hosted-worker0,[2620:52:0:1306::11]
+dhcp-host=aa:aa:aa:aa:04:12,hosted-worker1,[2620:52:0:1306::12]
+dhcp-host=aa:aa:aa:aa:04:13,hosted-worker2,[2620:52:0:1306::13]

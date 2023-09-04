@@ -1,0 +1,8 @@
+host-record=api-int.hub-ipv6.hypershiftbm.lab,2620:52:0:1306::2
+host-record=api.hub-ipv6.hypershiftbm.lab,2620:52:0:1306::2
+address=/apps.hub-ipv6.hypershiftbm.lab/2620:52:0:1306::3
+dhcp-host=aa:aa:aa:aa:03:01,ocp-master-0,[2620:52:0:1306::5]
+dhcp-host=aa:aa:aa:aa:03:02,ocp-master-1,[2620:52:0:1306::6]
+dhcp-host=aa:aa:aa:aa:03:03,ocp-master-2,[2620:52:0:1306::7]
+dhcp-host=aa:aa:aa:aa:03:06,ocp-installer,[2620:52:0:1306::8]
+dhcp-host=aa:aa:aa:aa:03:10,ocp-bootstrap,[2620:52:0:1306::9]
