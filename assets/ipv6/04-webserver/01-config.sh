@@ -16,3 +16,7 @@ if [[ $? == 0 ]];then
     echo "Launching Registry pod..."
     /usr/bin/podman run --name websrv-ai --net host -v /opt/srv:/usr/local/apache2/htdocs:z quay.io/alosadag/httpd:p8080
 fi
+
+echo "Applying the AgentServiceConfig..."
+sleep 10
+oc apply -f agentServiceConfig.yaml

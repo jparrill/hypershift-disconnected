@@ -2,6 +2,7 @@
 
 BASE_PATH=$(pwd)
 cd ../05-mirror/deploy
+
 cat <<EOF > multiclusterengine/multicluster_v1alpha1_multiclusterengine.yaml
 apiVersion: multicluster.openshift.io/v1
 kind: MultiClusterEngine
