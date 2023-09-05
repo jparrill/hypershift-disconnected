@@ -1,6 +1,10 @@
 ## LoadBalancer (MetalLB)
-host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::150
-host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::150
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::1b
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::17
+host-record=api-int.hosted.hypershiftbm.lab,2620:52:0:1306::14
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::1b
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::17
+host-record=api.hosted.hypershiftbm.lab,2620:52:0:1306::14
 
 ## LoadBalancer (MetalLB)
 address=/apps.hosted.hypershiftbm.lab/2620:52:0:1306::151

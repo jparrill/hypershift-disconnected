@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export IP="2620:52:0:1306::1" ## CHANGE THIS!: This is the first IP of the BM IPv6 Network you will deploy into
+export IP="192.168.125.1" ## CHANGE THIS!
 export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
 if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then

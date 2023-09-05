@@ -1,0 +1,15 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: rhacm-repo
+spec:
+  repositoryDigestMirrors:
+  - mirrors:
+    - $PRIVATE_REGISTRY/acm-d
+    source: registry.redhat.io/rhacm2
+  - mirrors:
+    - $PRIVATE_REGISTRY/acm-d
+    source: registry.redhat.io/multicluster-engine
+  - mirrors:
+    - $PRIVATE_REGISTRY/openshift4/ose-oauth-proxy
+    source: registry.access.redhat.com/openshift4/ose-oauth-proxy

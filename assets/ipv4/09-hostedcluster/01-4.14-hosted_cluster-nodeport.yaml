@@ -1,0 +1,244 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: clusters-hosted-ipv4
+spec: {}
+status: {}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: clusters
+spec: {}
+status: {}
+---
+apiVersion: v1
+data:
+  ca-bundle.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIGAzCCA+ugAwIBAgIUbR15XIuBLTFsoxJxnfVf50Y6/jowDQYJKoZIhvcNAQEL
+    BQAwfjELMAkGA1UEBhMCVVMxDzANBgNVBAgMBk1hZHJpZDEVMBMGA1UEBwwMU2Fu
+    IEJlcm5hcmRvMRIwEAYDVQQKDAlLYXJtYWxhYnMxDzANBgNVBAsMBkd1aXRhcjEi
+    MCAGA1UEAwwZcmVnaXN0cnkuaHlwZXJzaGlmdGJtLmxhYjAeFw0yMzA3MjcwMDAw
+    MjNaFw0zMzA3MjQwMDAwMjNaMH4xCzAJBgNVBAYTAlVTMQ8wDQYDVQQIDAZNYWRy
+    aWQxFTATBgNVBAcMDFNhbiBCZXJuYXJkbzESMBAGA1UECgwJS2FybWFsYWJzMQ8w
+    DQYDVQQLDAZHdWl0YXIxIjAgBgNVBAMMGXJlZ2lzdHJ5Lmh5cGVyc2hpZnRibS5s
+    YWIwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQD2dumUyacm1j99/pJs
+    EPuMdFADLXbuZqTCz7kIUc7Ahhs44zUdpgu6vKX/DwbKypONYLwkXrsKYla2SIkY
+    rGL+Uz7lOIRlLwU6M8oe2xvC2F4YOUL7IR4Az1rhzm9OxvuRu2XQTnXyAFruInLa
+    ri7yBE1AjUM3cyTiJFbc78VRR2MbKqS/qkXTkRdYcvmNwSf3zxNviKLE6WdWyet5
+    t/yaK+amIs2xQHftVSP0A+JxotDi5T4A0FJYU1iKkJkCyAS61lX9dXvav9bzKvGZ
+    vgWqZMMTcycX/4jrmccIKuI/ozq6lOpS9aPbMf0PJ4AewbcX+Uig+NoIjzfLfrXO
+    VtMZmvDz59kSUYa4i5jZk69S+VtizV6LJSw6G6FAvvtFnGdZgxsxoaruh2jiiPsN
+    f4RYdOllsat+or3NC3q0kPV21kbJhANyCmnbimvrOANaU/XT0VCPLV/sN9H91uR5
+    RRaTmgnasSEDRITdbL0PE3tPAd0g2mbrWLNjSb2BVK8XCogdw0qj22ln59TMTE+h
+    Xc1W4uSTTXW1VImuPCf+XwsWTlmTD/EDh0eS/qhwXOBblgMVzeBshw3luMVZAOnL
+    VXe0QX/I04h3ZMo9nkk/Dl4oBfChht36QU7yGMwHP4bH+5CTvnVBNcA9yG+OoqXT
+    Wv6610v7WJ5ALCnBElD1J3A5+QIDAQABo3kwdzAdBgNVHQ4EFgQU0R+jiUYnVdTG
+    a+o0ruZcs7WluEYwHwYDVR0jBBgwFoAU0R+jiUYnVdTGa+o0ruZcs7WluEYwDwYD
+    VR0TAQH/BAUwAwEB/zAkBgNVHREEHTAbghlyZWdpc3RyeS5oeXBlcnNoaWZ0Ym0u
+    bGFiMA0GCSqGSIb3DQEBCwUAA4ICAQDGn2SEZxPL0cRrPSXI9MdclWR86uI/m+cJ
+    H1LwRV/hBvTYuA8kg5O/FfsFWpbWL9DhGeqGGcHnLw8cuckbsy1O1ESZf3blZW7l
+    z4mtfDgiiQ5M5lXAStOxQugVGuUpI8kKeVP91hW61OQQkNd5BTB5bEbitudfzLJj
+    n80BLuENPhDZVNjkvteMMCDWPcBA/lqKWurgDPMnKiuYYPM+tgGBjp+sc9KBETzr
+    dM/3MrG3jrWdF8qUUcrXPaY362h5OESJaTPygB2J+vcr9Wl4yOce1S/B4WMgIG5x
+    zZ2I8NLeUcMCHIEZkOkRiN9ohrwY5IkxBuG9u8bjPCR2O9bmo7mbXtznFZedtD9P
+    rZ1tdvym/TbqK3+eCjbUx3zcESKRKaznYbqVjZVe9FksOiE2wXxJ6mi+hD9GZF8U
+    O0fDTQYHd4ZA06zpFjwE/1CYeyHl8vXWdPphRWSQd7p7XDpV6DlQnV8+dR9o5lfN
+    NOCMy4KWDg7GjvAnUUl1gdQEqXJ9BJBDYDdbarki2LVqqz/gr6dK6DNtPB+MfH/z
+    AjXPY8BH+1rbyuYq2PbAqzGqRCavqlH1qQ3aUNsTM3TBib6DBcCnaSvVbd5Bl3gk
+    MGd7JYW0S3Y4lG3rgvJ/2LGtIAVdMDSSqAoWjC9u636/ezG0yAW4LtmFUJqWZk5z
+    lb3YWvBOWw==
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  name: user-ca-bundle
+  namespace: clusters
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJyZWdpc3RyeS5oeXBlcnNoaWZ0Ym0ubGFiOjUwMDAiOnsiYXV0aCI6IlpIVnRiWGs2WkhWdGJYaz0iLCJlbWFpbCI6ImpwYXJyaWxsQHJlZGhhdC5jb20ifX19Cg==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-ipv4-pull-secret
+  namespace: clusters
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sshkey-cluster-hosted-ipv4
+  namespace: clusters
+stringData:
+  id_rsa.pub: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDk7ICaUE+/k4zTpxLk4+xFdHi4ZuDi5qjeF52afsNkw0w/glILHhwpL5gnp5WkRuL8GwJuZ1VqLC9EKrdmegn4MrmUlq7WTsP0VFOZFBfq2XRUxo1wrRdor2z0Bbh93ytR+ZsDbbLlGngXaMa0Vbt+z74FqlcajbHTZ6zBmTpBVq5RHtDPgKITdpE1fongp7+ZXQNBlkaavaqv8bnyrP4BWahLP4iO9/xJF9lQYboYwEEDzmnKLMW1VtCE6nJzEgWCufACTbxpNS7GvKtoHT/OVzw8ArEXhZXQUS1UY8zKsX2iXwmyhw5Sj6YboA8WICs4z+TrFP89LmxXY0j6536TQFyRz1iB4WWvCbH5n6W+ABV2e8ssJB1AmEy8QYNwpJQJNpSxzoKBjI73XxvPYYC/IjPFMySwZqrSZCkJYqQ023ySkaQxWZT7in4KeMu7eS2tC+Kn4deJ7KwwUycx8n6RHMeD8Qg9flTHCv3gmab8JKZJqN3hW1D378JuvmIX4V0=
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  creationTimestamp: null
+  name: hosted-ipv4
+  namespace: clusters
+  annotations:
+    hypershift.openshift.io/control-plane-operator-image: registry.hypershiftbm.lab:5000/jparrill/hypershift:BMSelfManage-v4.14-rc-v3 ## CHANGE THIS!!
+spec:
+  # required to be able to read the release, this is a reference to a ConfigMap that must exists on the global clusters namespace
+  additionalTrustBundle:
+    name: "user-ca-bundle"
+  # Required to run OLM on the hosted cluster data plane rather than in the control plane
+  olmCatalogPlacement: guest
+  imageContentSources:
+  - source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release
+  - source: quay.io/openshift-release-dev/ocp-release
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release-images
+  - mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release
+    source: registry.build03.ci.openshift.org/ci-ln-7mxtvht/release
+  - mirrors:
+    - registry.hypershiftbm.lab:5000/openshift/release-images
+    source: registry.build03.ci.openshift.org/ci-ln-7mxtvht/stable
+  - source: registry.redhat.io/multicluster-engine
+    mirrors:
+    - registry.hypershiftbm.lab:5000/multicluster-engine
+  - source: registry.redhat.io/rhel8
+    mirrors:
+    - registry.hypershiftbm.lab:5000/rhel8
+  - source: registry.hypershiftbm.lab:5000/rhacm2
+    mirrors:
+    - registry.redhat.io/rhacm2
+  - source: registry.redhat.io/openshift4
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift4
+  - source: registry.redhat.io/lvms4
+    mirrors:
+    - registry.hypershiftbm.lab:5000/lvms4
+  - source: quay.io/edge-infrastructure
+    mirrors:
+    - registry.hypershiftbm.lab:5000/edge-infrastructure
+  - source: quay.io/openshift-community-operators
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift-community-operators
+  - source: quay.io/openshift-hive
+    mirrors:
+    - registry.hypershiftbm.lab:5000/openshift-hive
+  - source: quay.io/ocpmetal
+    mirrors:
+    - registry.hypershiftbm.lab:5000/ocpmetal
+  - source: quay.io/app-sre
+    mirrors:
+    - registry.hypershiftbm.lab:5000/app-sre
+  ## CHANGE THIS!! ^^
+  autoscaling: {}
+  controllerAvailabilityPolicy: SingleReplica
+  dns:
+    baseDomain: hypershiftbm.lab
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+        restoreSnapshotURL: null
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+  platform:
+    agent:
+      agentNamespace: clusters-hosted-ipv4
+    type: Agent
+  pullSecret:
+    name: hosted-ipv4-pull-secret
+  release:
+    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237 ## CHANGE THIS!!
+  secretEncryption:
+    aescbc:
+      activeKey:
+        name: hosted-ipv4-etcd-encryption-key
+    type: aescbc
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      nodePort:
+        address: api.hosted-ipv4.hypershiftbm.lab
+      type: NodePort
+  - service: OAuthServer
+    servicePublishingStrategy:
+      nodePort:
+        address: api.hosted-ipv4.hypershiftbm.lab
+      type: NodePort
+  - service: OIDC
+    servicePublishingStrategy:
+      nodePort:
+        address: api.hosted-ipv4.hypershiftbm.lab
+      type: NodePort
+  - service: Konnectivity
+    servicePublishingStrategy:
+      nodePort:
+        address: api.hosted-ipv4.hypershiftbm.lab
+      type: NodePort
+  - service: Ignition
+    servicePublishingStrategy:
+      nodePort:
+        address: api.hosted-ipv4.hypershiftbm.lab
+      type: NodePort
+  sshKey:
+    name: sshkey-cluster-hosted-ipv4
+status:
+  controlPlaneEndpoint:
+    host: ""
+    port: 0
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: capi-provider-role
+  namespace: clusters-hosted-ipv4
+rules:
+- apiGroups:
+  - agent-install.openshift.io
+  resources:
+  - agents
+  verbs:
+  - '*'
+---
+apiVersion: v1
+data:
+  key: nTPtVBEt03owkrKhIdmSW8jrWRxU57KO/fnZa8oaG0Y=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: hosted-ipv4-etcd-encryption-key
+  namespace: clusters
+type: Opaque
+---
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: hosted-ipv4
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: hosted-ipv4
+  management:
+    autoRepair: false
+    upgradeType: Replace
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  release:
+    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237 ## CHANGE THIS!!
+  replicas: 0
+status:
+  replicas: 0

@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-dual-worker0-bmc-secret
+  namespace: clusters-hosted-dual
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-dual-worker1-bmc-secret
+  namespace: clusters-hosted-dual
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-dual-worker2-bmc-secret
+  namespace: clusters-hosted-dual
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-dual-worker0
+  namespace: clusters-hosted-dual
+  labels:
+    infraenvs.agent-install.openshift.io: hosted-dual
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-dual-worker0
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-dual-worker0
+    credentialsName: hosted-dual-worker0-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:11:01
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-dual-worker1
+  namespace: clusters-hosted-dual
+  labels:
+    infraenvs.agent-install.openshift.io: hosted-dual
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-dual-worker1
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-dual-worker1
+    credentialsName: hosted-dual-worker1-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:11:02
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-dual-worker2
+  namespace: clusters-hosted-dual
+  labels:
+    infraenvs.agent-install.openshift.io: hosted-dual
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-dual-worker2
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://192.168.126.1:9000/redfish/v1/Systems/local/hosted-dual-worker2
+    credentialsName: hosted-dual-worker2-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:11:03
+  online: true

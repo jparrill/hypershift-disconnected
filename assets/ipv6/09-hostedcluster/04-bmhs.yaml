@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-worker0-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-worker1-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hosted-worker2-bmc-secret
+  namespace: clusters-hosted
+data:
+  password: YWRtaW4=
+  username: YWRtaW4=
+type: Opaque
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-worker0
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-worker0
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker0
+    credentialsName: hosted-worker0-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:04:11
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-worker1
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-worker1
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker1
+    credentialsName: hosted-worker1-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:04:12
+  online: true
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: hosted-worker2
+  namespace: clusters-hosted
+  labels:
+    infraenvs.agent-install.openshift.io: hosted
+  annotations:
+    inspect.metal3.io: disabled
+    bmac.agent-install.openshift.io/hostname: hosted-worker2
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    disableCertificateVerification: True
+    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker2
+    credentialsName: hosted-worker2-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:04:13
+  online: true

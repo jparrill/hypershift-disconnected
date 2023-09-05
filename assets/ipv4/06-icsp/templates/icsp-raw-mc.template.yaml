@@ -1,0 +1,23 @@
+[[registry]]
+  prefix = ""
+  location = "registry.redhat.io/openshift4/ose-kube-rbac-proxy"
+  mirror-by-digest-only = false
+
+[[registry.mirror]]
+location = "$PRIVATE_REGISTRY/openshift4/ose-kube-rbac-proxy"
+
+[[registry]]
+  prefix = ""
+  location = "quay.io/acm-d"
+  mirror-by-digest-only = false
+
+[[registry.mirror]]
+location = "$PRIVATE_REGISTRY/acm-d"
+
+[[registry]]
+  prefix = ""
+  location = "quay.io/open-cluster-management/addon-manager"
+  mirror-by-digest-only = false
+
+[[registry.mirror]]
+location = "$PRIVATE_REGISTRY/open-cluster-management/addon-manager"

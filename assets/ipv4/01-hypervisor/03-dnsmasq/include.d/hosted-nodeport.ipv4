@@ -1,0 +1,16 @@
+## Nodeport
+host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.20
+host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.21
+host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.22
+host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.20
+host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.21
+host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.22
+
+## Nodeport
+## IMPORTANT!: You should point to the node which is exposing the routed.
+address=/apps.hosted-ipv4.hypershiftbm.lab.lab/192.168.125.30
+
+## General
+dhcp-host=aa:aa:aa:aa:02:01,hosted-ipv4-worker0,192.168.125.30
+dhcp-host=aa:aa:aa:aa:02:02,hosted-ipv4-worker1,192.168.125.31
+dhcp-host=aa:aa:aa:aa:02:03,hosted-ipv4-worker2,192.168.125.32
