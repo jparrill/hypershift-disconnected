@@ -7,7 +7,7 @@ ipv6: true
 domain: hypershiftbm.lab
 api_ip: 2620:52:0:1306::2
 ingress_ip: 2620:52:0:1306::3
-disconnected_url: registry.hypershiftbm.lab:5000
+disconnected_url: registry.hypershiftbm.lab:5000 ## CHANGE THIS!
 disconnected_update: true
 disconnected_user: dummy
 disconnected_password: dummy
