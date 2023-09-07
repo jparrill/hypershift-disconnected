@@ -1,0 +1,74 @@
+site_name: HyperShift Disconnected
+theme:
+  name: material
+  features:
+  - navigation.tabs
+  - navigation.indexes
+  - content.code.annotate
+plugins:
+- search
+- mermaid2
+- glightbox:
+    touchNavigation: true
+    loop: false
+    effect: zoom
+    width: 100%
+    height: auto
+    zoomable: true
+    draggable: true
+    skip_classes:
+      - custom-skip-class-name
+    auto_caption: false
+    caption_position: bottom
+docs_dir: content
+repo_url: https://github.com/jparrill/hypershift-disconnected
+edit_uri: edit/main/docs/content
+repo_name: jparrill/hypershift-disconnected
+extra_javascript:
+  - https://unpkg.com/mermaid@9.2.2/dist/mermaid.min.js
+markdown_extensions:
+- toc:
+    toc_depth: "2-3"
+- attr_list:
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: !!python/name:mermaid2.fence_mermaid
+- pymdownx.snippets
+- admonition
+- pymdownx.details
+- pymdownx.tabbed:
+    alternate_style: true
+nav:
+- Home: index.md
+- 'IPv4':
+  - IPv4/index.md
+  - 'Hypervisor':
+    - IPv4/hypervisor/index.md
+    - IPv4/hypervisor/requisites.md
+    - IPv4/hypervisor/packaging.md
+    - IPv4/hypervisor/network-manager-dispatcher.md
+    - 'BMC Access for Metal3': IPv4/hypervisor/redfish-for-vms.md
+    - IPv4/hypervisor/hypervisor-system-config.md
+  - IPv4/dns.md
+  - IPv4/registry.md
+  - 'Management Cluster':
+    - 'Management Cluster Provisioning': IPv4/mgmt-cluster/index.md
+    - 'Networking': IPv4/mgmt-cluster/network.md
+    - 'Openshift Compact IPv4': IPv4/mgmt-cluster/compact-ipv4.md
+  - IPv4/webserver.md
+  - 'Mirroring':
+    - 'Mirroring': IPv4/mirror/index.md
+  - 'Image Content Policies': IPv4/ICSP-IDMS.md
+  - 'Multicluster Engine':
+    - 'Multicluster Engine': IPv4/mce/index.md
+  - 'TLS Certificates': IPv4/tls-certificates.md
+  - 'HostedCluster':
+    - 'HostedCluster Provision': IPv4/hostedcluster/index.md
+- 'IPv6':
+  - IPv6/index.md
+- 'Dual Stack':
+  - Dual/index.md
