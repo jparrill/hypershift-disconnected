@@ -1,73 +1,10 @@
-The mirroring step usually takes some time to be addressed, so we recommend to start with this part once we have the Registry server up and running.
+!!! important
 
-For this purpose we will use the `oc-mirror` tool, which is a binary that uses an object called `ImageSetConfiguration`.
+    This section is only relevant in disconnected scenarios, if this is not your case, you can continue with the next section
 
-In this file you can specify:
+The image mirroring it's basically the process to grab the images from the external registries like registry.redhat.com or quay.io to your private registry.
 
-- The Openshift versions to mirror (they should be located in quay.io)
-- The additional operators to mirror selecting packages individually
-- The extra images you want to add to the repository
+In order to know how to do this follow the nexts sections:
 
-This is how looks like the `ImageSetConfiguration` that we will use for our mirroring:
-
-```yaml
-apiVersion: mirror.openshift.io/v1alpha2
-kind: ImageSetConfiguration
-storageConfig:
-  registry:
-    imageURL: registry.hypershiftbm.lab:5000/openshift/release/metadata:latest ## CHANGE THIS!
-mirror:
-  platform:
-    channels:
-    - name: candidate-4.14
-      minVersion: 4.14.0-ec.1
-      maxVersion: 4.14.0-ec.3
-      type: ocp
-    graph: true
-  additionalImages:
-  - name: quay.io/karmab/origin-keepalived-ipfailover:latest
-  - name: quay.io/karmab/kubectl:latest
-  - name: quay.io/karmab/haproxy:latest
-  - name: quay.io/karmab/mdns-publisher:latest
-  - name: quay.io/karmab/origin-coredns:latest
-  - name: quay.io/karmab/curl:latest
-  - name: quay.io/karmab/kcli:latest
-  - name: quay.io/mavazque/trbsht:latest
-  - name: quay.io/jparrill/hypershift:BMSelfManage-v4.14-rc-v3
-  - name: registry.redhat.io/openshift4/ose-kube-rbac-proxy:v4.10
-  operators:
-  - catalog: registry.redhat.io/redhat/redhat-operator-index:v4.13
-    packages:
-    - name: lvms-operator
-    - name: local-storage-operator
-    - name: odf-csi-addons-operator
-    - name: odf-operator
-    - name: mcg-operator
-    - name: ocs-operator
-    - name: metallb-operator
-```
-
-Make sure you have your `${HOME}/.docker/config.json` file updated with the registries you try to mirror from and your private registry to push the images to.
-
-After that, we can begin the mirroring process:
-
-```bash
-oc-mirror --source-skip-tls --config imagesetconfig.yaml docker://${REGISTRY}
-```
-
-Once the mirror finishes, you will have a new folder called `oc-mirror-workspace/results-XXXXXX/` which contains the ICSP and the CatalogSources to be applied later on the HostedCluster.
-
-## Mirroring Nightly and CI releases
-
-The bad part in all of this, we cannot cover nightly or CI versions of Openshift so we will need to use the `oc adm release mirror` to mirror that versions.
-
-To mirror the nightly versions we need for this deployment you need to execute this:
-
-```bash
-REGISTRY=registry.$(hostname --long):5000
-
-oc adm release mirror \
-  --from=registry.ci.openshift.org/ocp/release:4.14.0-0.nightly-2023-08-29-102237 \
-  --to=${REGISTRY}/openshift/release \
-  --to-release-image=${REGISTRY}openshift/release-images:4.14.0-0.nightly-2023-08-29-102237
-```
+[Image Mirroring Process](mirroring.md){ .md-button }
+[ICSP and IDMS](ICSP-IDMS.md){ .md-button }

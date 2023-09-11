@@ -60,14 +60,22 @@ nav:
     - 'Networking': IPv4/mgmt-cluster/network.md
     - 'Openshift Compact IPv4': IPv4/mgmt-cluster/compact-ipv4.md
   - IPv4/webserver.md
-  - 'Mirroring':
-    - 'Mirroring': IPv4/mirror/index.md
-  - 'Image Content Policies': IPv4/ICSP-IDMS.md
+  - 'Mirroring and Image Content Sources':
+    - IPv4/mirror/index.md
+    - 'Mirroring': IPv4/mirror/mirroring.md
+    - 'Image Content Policies': IPv4/mirror/ICSP-IDMS.md
   - 'Multicluster Engine':
     - 'Multicluster Engine': IPv4/mce/index.md
+    - 'ACM/MCE Deployment': IPv4/mce/multicluster-engine.md
+    - 'Agent Service Config': IPv4/mce/agentserviceconfig.md
   - 'TLS Certificates': IPv4/tls-certificates.md
-  - 'HostedCluster':
-    - 'HostedCluster Provision': IPv4/hostedcluster/index.md
+  - 'HostedCluster ':
+    - 'Hosted Cluster Creation': IPv4/hostedcluster/index.md
+    - 'Hosted Cluster Object': IPv4/hostedcluster/hostedcluster.md
+    - 'Node Pools': IPv4/hostedcluster/nodepool.md
+    - 'Infra Env': IPv4/hostedcluster/infraenv.md
+    - 'Worker Nodes': IPv4/hostedcluster/worker-nodes.md
+    - 'Bare Metal Hosts': IPv4/hostedcluster/baremetalhost.md
 - 'IPv6':
   - IPv6/index.md
 - 'Dual Stack':

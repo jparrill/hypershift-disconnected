@@ -1,3 +1,7 @@
+!!! important
+
+    This section is only relevant in disconnected scenarios, if this is not your case, you can continue with the next section.
+
 This section talks about an additional webserver that you need to configure to host the RHCOS images associated with the Openshift release you are trying to deploy as a HostedCluster.
 
 To do this, you can use this script:
