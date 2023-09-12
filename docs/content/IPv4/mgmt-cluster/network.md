@@ -23,8 +23,8 @@ Listing Networks...
 | Network |  Type  |         Cidr        |  Dhcp |      Domain      | Mode |
 +---------+--------+---------------------+-------+------------------+------+
 | default | routed |   192.168.122.0/24  |  True |     default      | nat  |
-| ipv4    | routed |   192.168.125.0/24  | False | hypershiftBM.lab | nat  |
-| ipv6    | routed | 2620:52:0:1306::/64 | False | hypershiftBM.lab | nat  |
+| ipv4    | routed |   192.168.125.0/24  | False | hypershiftbm.lab | nat  |
+| ipv6    | routed | 2620:52:0:1306::/64 | False | hypershiftbm.lab | nat  |
 +---------+--------+---------------------+-------+------------------+------+
 ```
 
@@ -33,7 +33,7 @@ Listing Networks...
 Providing information about network ipv4...
 cidr: 192.168.125.0/24
 dhcp: false
-domain: hypershiftBM.lab
+domain: hypershiftbm.lab
 mode: nat
 plan: kvirt
 type: routed

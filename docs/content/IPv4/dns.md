@@ -40,16 +40,16 @@ Create the different component DNS configurations
 - `/opt/dnsmasq/include.d/hosted-nodeport.ipv4`
 ```
 ## Nodeport
-host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.20
-host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.21
-host-record=api-int.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.22
-host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.20
-host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.21
-host-record=api.hosted-ipv4.hypershiftbm.lab.lab,192.168.125.22
+host-record=api-int.hosted-ipv4.hypershiftbm.lab,192.168.125.20
+host-record=api-int.hosted-ipv4.hypershiftbm.lab,192.168.125.21
+host-record=api-int.hosted-ipv4.hypershiftbm.lab,192.168.125.22
+host-record=api.hosted-ipv4.hypershiftbm.lab,192.168.125.20
+host-record=api.hosted-ipv4.hypershiftbm.lab,192.168.125.21
+host-record=api.hosted-ipv4.hypershiftbm.lab,192.168.125.22
 
 ## Nodeport
 ## IMPORTANT!: You should point to the node which is exposing the routed.
-address=/apps.hosted-ipv4.hypershiftbm.lab.lab/192.168.125.30
+address=/apps.hosted-ipv4.hypershiftbm.lab/192.168.125.30
 
 ## General
 dhcp-host=aa:aa:aa:aa:02:01,hosted-ipv4-worker0,192.168.125.30
@@ -59,9 +59,9 @@ dhcp-host=aa:aa:aa:aa:02:03,hosted-ipv4-worker2,192.168.125.32
 
 - `/opt/dnsmasq/include.d/hub.ipv4`
 ```
-host-record=api-int.hub-ipv4.hypershiftbm.lab.lab,192.168.125.10
-host-record=api.hub-ipv4.hypershiftbm.lab.lab,192.168.125.10
-address=/apps.hub-ipv4.hypershiftbm.lab.lab/192.168.125.11
+host-record=api-int.hub-ipv4.hypershiftbm.lab,192.168.125.10
+host-record=api.hub-ipv4.hypershiftbm.lab,192.168.125.10
+address=/apps.hub-ipv4.hypershiftbm.lab/192.168.125.11
 dhcp-host=aa:aa:aa:aa:02:01,ocp-master-0,192.168.125.20
 dhcp-host=aa:aa:aa:aa:02:02,ocp-master-1,192.168.125.21
 dhcp-host=aa:aa:aa:aa:02:03,ocp-master-2,192.168.125.22

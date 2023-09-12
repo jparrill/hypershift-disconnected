@@ -48,9 +48,9 @@ nav:
   - IPv4/index.md
   - 'Hypervisor':
     - IPv4/hypervisor/index.md
-    - IPv4/hypervisor/requisites.md
-    - IPv4/hypervisor/packaging.md
-    - IPv4/hypervisor/network-manager-dispatcher.md
+    - 'Bare Metal Requisites': IPv4/hypervisor/requisites.md
+    - 'Packaging': IPv4/hypervisor/packaging.md
+    - 'Network Manager Dispatcher': IPv4/hypervisor/network-manager-dispatcher.md
     - 'BMC Access for Metal3': IPv4/hypervisor/redfish-for-vms.md
     - IPv4/hypervisor/hypervisor-system-config.md
   - IPv4/dns.md
@@ -69,14 +69,52 @@ nav:
     - 'ACM/MCE Deployment': IPv4/mce/multicluster-engine.md
     - 'Agent Service Config': IPv4/mce/agentserviceconfig.md
   - 'TLS Certificates': IPv4/tls-certificates.md
-  - 'HostedCluster ':
+  - 'HostedCluster':
     - 'Hosted Cluster Creation': IPv4/hostedcluster/index.md
     - 'Hosted Cluster Object': IPv4/hostedcluster/hostedcluster.md
     - 'Node Pools': IPv4/hostedcluster/nodepool.md
     - 'Infra Env': IPv4/hostedcluster/infraenv.md
     - 'Worker Nodes': IPv4/hostedcluster/worker-nodes.md
     - 'Bare Metal Hosts': IPv4/hostedcluster/baremetalhost.md
+  - 'Finishing Deployment':
+    - 'Watching the Control Plane': IPv4/watching/watching-cp.md
+    - 'Watching the Data Plane': IPv4/watching/watching-dp.md
+
 - 'IPv6':
   - IPv6/index.md
+  - 'Hypervisor':
+    - IPv6/hypervisor/index.md
+    - 'Bare Metal Requisites': IPv6/hypervisor/requisites.md
+    - 'Packaging': IPv6/hypervisor/packaging.md
+    - 'Network Manager Dispatcher': IPv6/hypervisor/network-manager-dispatcher.md
+    - 'BMC Access for Metal3': IPv6/hypervisor/redfish-for-vms.md
+    - IPv6/hypervisor/hypervisor-system-config.md
+  - IPv6/dns.md
+  - IPv6/registry.md
+  - 'Management Cluster':
+    - 'Management Cluster Provisioning': IPv6/mgmt-cluster/index.md
+    - 'Networking': IPv6/mgmt-cluster/network.md
+    - 'Openshift Compact IPv6': IPv6/mgmt-cluster/compact-ipv6.md
+  - IPv6/webserver.md
+  - 'Mirroring and Image Content Sources':
+    - IPv6/mirror/index.md
+    - 'Mirroring': IPv6/mirror/mirroring.md
+    - 'Image Content Policies': IPv6/mirror/ICSP-IDMS.md
+  - 'Multicluster Engine':
+    - 'Multicluster Engine': IPv6/mce/index.md
+    - 'ACM/MCE Deployment': IPv6/mce/multicluster-engine.md
+    - 'Agent Service Config': IPv6/mce/agentserviceconfig.md
+  - 'TLS Certificates': IPv6/tls-certificates.md
+  - 'HostedCluster':
+    - 'Hosted Cluster Creation': IPv6/hostedcluster/index.md
+    - 'Hosted Cluster Object': IPv6/hostedcluster/hostedcluster.md
+    - 'Node Pools': IPv6/hostedcluster/nodepool.md
+    - 'Infra Env': IPv6/hostedcluster/infraenv.md
+    - 'Worker Nodes': IPv6/hostedcluster/worker-nodes.md
+    - 'Bare Metal Hosts': IPv6/hostedcluster/baremetalhost.md
+  - 'Finishing Deployment':
+    - 'Watching the Control Plane': IPv6/watching/watching-cp.md
+    - 'Watching the Data Plane': IPv6/watching/watching-dp.md
+
 - 'Dual Stack':
   - Dual/index.md
