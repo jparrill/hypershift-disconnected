@@ -1,4 +1,4 @@
-IMG ?= quay.io/hypershift/mkdocs-material:latest
+IMG ?= quay.io/jparrill/mkdocs-material:latest
 RUNTIME ?= docker
 
 .PHONY: build
