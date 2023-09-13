@@ -43,6 +43,6 @@ cat ${REGISTRY_CERT_PATH} >> ${TMP_FILE}
 oc create configmap user-ca-bundle -n openshift-config --from-file=ca-bundle.crt=${TMP_FILE} --dry-run=client -o yaml | kubectl apply -f -
 ```
 
-You have a functional script located in the `assets/<NetworkStack>/09-tls-certificated/01-config.sh`, [this is the sample for IPv4](https://github.com/jparrill/hypershift-disconnected/blob/main/assets/ipv4/09-tls-certificates/01-config.sh).
+You have a functional script located in the `assets/<NetworkStack>/09-tls-certificated/01-config.sh`, [this is the sample for IPv6](https://github.com/jparrill/hypershift-disconnected/blob/main/assets/ipv6/09-tls-certificates/01-config.sh).
 
 

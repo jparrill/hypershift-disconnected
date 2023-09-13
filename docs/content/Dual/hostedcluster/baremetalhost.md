@@ -7,8 +7,8 @@ BareMetalHost is an openshift-machine-api object where we include some physical 
 apiVersion: v1
 kind: Secret
 metadata:
-  name: hosted-ipv4-worker0-bmc-secret
-  namespace: clusters-hosted-ipv4
+  name: hosted-dual-worker0-bmc-secret
+  namespace: clusters-hosted-dual
 data:
   password: YWRtaW4=
   username: YWRtaW4=
@@ -17,19 +17,19 @@ type: Opaque
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: hosted-ipv4-worker0
-  namespace: clusters-hosted-ipv4
+  name: hosted-dual-worker0
+  namespace: clusters-hosted-dual
   labels:
-    infraenvs.agent-install.openshift.io: hosted-ipv4
+    infraenvs.agent-install.openshift.io: hosted-dual
   annotations:
     inspect.metal3.io: disabled
-    bmac.agent-install.openshift.io/hostname: hosted-ipv4-worker0
+    bmac.agent-install.openshift.io/hostname: hosted-dual-worker0
 spec:
   automatedCleaningMode: disabled
   bmc:
     disableCertificateVerification: true
-    address: redfish-virtualmedia://[192.168.125.1]:9000/redfish/v1/Systems/local/hosted-ipv4-worker0
-    credentialsName: hosted-ipv4-worker0-bmc-secret
+    address: redfish-virtualmedia://[192.168.126.1]:9000/redfish/v1/Systems/local/hosted-dual-worker0
+    credentialsName: hosted-dual-worker0-bmc-secret
   bootMACAddress: aa:aa:aa:aa:02:11
   online: true
 ```
@@ -104,7 +104,7 @@ The nodes will boot with the Agent's RHCOS LiveISO and with a pod running by def
 To do so we just need to execute this command:
 
 ```bash
-oc -n clusters scale nodepool hosted-ipv4 --replicas 3
+oc -n clusters scale nodepool hosted-dual --replicas 3
 ```
 
 After the nodepool scalation we can see the agents are assigned to a Hosted Cluster

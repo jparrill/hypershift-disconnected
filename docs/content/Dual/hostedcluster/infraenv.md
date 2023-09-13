@@ -5,8 +5,8 @@ InfraEnv is a Assisted Service object which include details like the `pullSecret
 apiVersion: agent-install.openshift.io/v1beta1
 kind: InfraEnv
 metadata:
-  name: hosted-ipv4
-  namespace: clusters-hosted-ipv4
+  name: hosted-dual
+  namespace: clusters-hosted-dual
 spec:
   pullSecretRef:
     name: pull-secret
@@ -28,5 +28,5 @@ And this is how looks like
 
 ```bash
 NAMESPACE              NAME     ISO CREATED AT
-clusters-hosted-ipv4   hosted   2023-09-11T15:14:10Z
+clusters-hosted-dual   hosted   2023-09-11T15:14:10Z
 ```

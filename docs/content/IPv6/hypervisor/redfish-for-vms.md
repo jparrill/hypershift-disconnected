@@ -12,5 +12,5 @@ systemctl enable --now ksushy
 To test if this service is working fine check the service itself with `systemctl status ksushy`. Also you can execute a curl against the exposed interface:
 
 ```
-curl -Lk https://[2620:52:0:1306::1]:9000/redfish/v1
+curl -Lk https://[2620:52:0:1305::1]:9000/redfish/v1
 ```

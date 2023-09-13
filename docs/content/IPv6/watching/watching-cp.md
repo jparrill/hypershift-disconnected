@@ -1,1 +1,1 @@
-../../common/watching-cp.md
+../../common/watching/watching-cp.md

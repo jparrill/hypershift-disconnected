@@ -7,8 +7,8 @@ BareMetalHost is an openshift-machine-api object where we include some physical 
 apiVersion: v1
 kind: Secret
 metadata:
-  name: hosted-ipv4-worker0-bmc-secret
-  namespace: clusters-hosted-ipv4
+  name: hosted-ipv6-worker0-bmc-secret
+  namespace: clusters-hosted-ipv6
 data:
   password: YWRtaW4=
   username: YWRtaW4=
@@ -17,20 +17,20 @@ type: Opaque
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: hosted-ipv4-worker0
-  namespace: clusters-hosted-ipv4
+  name: hosted-ipv6-worker0
+  namespace: clusters-hosted-ipv6
   labels:
-    infraenvs.agent-install.openshift.io: hosted-ipv4
+    infraenvs.agent-install.openshift.io: hosted-ipv6
   annotations:
     inspect.metal3.io: disabled
-    bmac.agent-install.openshift.io/hostname: hosted-ipv4-worker0
+    bmac.agent-install.openshift.io/hostname: hosted-ipv6-worker0
 spec:
   automatedCleaningMode: disabled
   bmc:
     disableCertificateVerification: true
-    address: redfish-virtualmedia://[192.168.125.1]:9000/redfish/v1/Systems/local/hosted-ipv4-worker0
-    credentialsName: hosted-ipv4-worker0-bmc-secret
-  bootMACAddress: aa:aa:aa:aa:02:11
+    address: redfish-virtualmedia://[192.168.125.1]:9000/redfish/v1/Systems/local/hosted-ipv6-worker0
+    credentialsName: hosted-ipv6-worker0-bmc-secret
+  bootMACAddress: aa:aa:aa:aa:03:11
   online: true
 ```
 
@@ -104,16 +104,16 @@ The nodes will boot with the Agent's RHCOS LiveISO and with a pod running by def
 To do so we just need to execute this command:
 
 ```bash
-oc -n clusters scale nodepool hosted-ipv4 --replicas 3
+oc -n clusters scale nodepool hosted-ipv6 --replicas 3
 ```
 
 After the nodepool scalation we can see the agents are assigned to a Hosted Cluster
 
 ```
 NAMESPACE         NAME                                   CLUSTER   APPROVED   ROLE          STAGE
-clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0411   hosted    true       auto-assign
-clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0412   hosted    true       auto-assign
-clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0413   hosted    true       auto-assign
+clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0211   hosted    true       auto-assign
+clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0212   hosted    true       auto-assign
+clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0213   hosted    true       auto-assign
 ```
 
 And the NodePool replicas set

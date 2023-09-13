@@ -42,7 +42,7 @@ spec:
   automatedCleaningMode: disabled
   bmc:
     disableCertificateVerification: True
-    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker0
+    address: redfish-virtualmedia://[2620:52:0:1305::1]:9000/redfish/v1/Systems/local/hosted-worker0
     credentialsName: hosted-worker0-bmc-secret
   bootMACAddress: aa:aa:aa:aa:04:11
   online: true
@@ -61,7 +61,7 @@ spec:
   automatedCleaningMode: disabled
   bmc:
     disableCertificateVerification: True
-    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker1
+    address: redfish-virtualmedia://[2620:52:0:1305::1]:9000/redfish/v1/Systems/local/hosted-worker1
     credentialsName: hosted-worker1-bmc-secret
   bootMACAddress: aa:aa:aa:aa:04:12
   online: true
@@ -80,7 +80,7 @@ spec:
   automatedCleaningMode: disabled
   bmc:
     disableCertificateVerification: True
-    address: redfish-virtualmedia://[2620:52:0:1306::1]:9000/redfish/v1/Systems/local/hosted-worker2
+    address: redfish-virtualmedia://[2620:52:0:1305::1]:9000/redfish/v1/Systems/local/hosted-worker2
     credentialsName: hosted-worker2-bmc-secret
   bootMACAddress: aa:aa:aa:aa:04:13
   online: true

@@ -11,9 +11,9 @@ If this is not your first try, you will need first to delete the prior try, to d
 Now we can execute these creation commands:
 
 ```bash
-kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv4 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv4\", \"mac\": \"aa:aa:aa:aa:02:11\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0211 -P name=hosted-ipv4-worker0
-kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv4 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv4\", \"mac\": \"aa:aa:aa:aa:02:12\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0212 -P name=hosted-ipv4-worker1
-kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv4 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv4\", \"mac\": \"aa:aa:aa:aa:02:13\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0213 -P name=hosted-ipv4-worker2
+kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv6 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv6\", \"mac\": \"aa:aa:aa:aa:02:11\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0211 -P name=hosted-ipv6-worker0
+kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv6 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv6\", \"mac\": \"aa:aa:aa:aa:02:12\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0212 -P name=hosted-ipv6-worker1
+kcli create vm -P start=False -P uefi_legacy=true -P plan=hosted-ipv6 -P memory=8192 -P numcpus=16 -P disks=[200,200] -P nets=["{\"name\": \"ipv6\", \"mac\": \"aa:aa:aa:aa:02:13\"}"] -P uuid=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0213 -P name=hosted-ipv6-worker2
 
 sleep 2
 systemctl restart ksushy
@@ -23,10 +23,10 @@ Let's disect the creation command:
 
 - `start=False`: The VM will not boot automatically on creation
 - `uefi_legacy=true`: We will use uefi legacy boot to make that compatible with older implementations of UEFI
-- `plan=hosted-ipv4`: Plan name, which identifies a group of machines as a group.
+- `plan=hosted-ipv6`: Plan name, which identifies a group of machines as a group.
 - `memory=8192` and `numcpus=16`: Resources for the VM as a Ram and CPU.
 - `disks=[200,200]`: We are creating 2 disks (thin) in the virtual machine.
-- `nets=["{"name": "ipv4", "mac": "aa:aa:aa:aa:02:13"}"]`: Network details, like the Network name to be located on and the MAC address for the primary interface.
+- `nets=["{"name": "ipv6", "mac": "aa:aa:aa:aa:02:13"}"]`: Network details, like the Network name to be located on and the MAC address for the primary interface.
 - The ksushy restart is to make our ksushy (VM's BMC) aware of the new VMs included.
 
 This is how looks like:
@@ -35,9 +35,9 @@ This is how looks like:
 +---------------------+--------+-------------------+----------------------------------------------------+-------------+---------+
 |         Name        | Status |         Ip        |                       Source                       |     Plan    | Profile |
 +---------------------+--------+-------------------+----------------------------------------------------+-------------+---------+
-|    hosted-worker0   |  down  |                   |                                                    | hosted-ipv4 |  kvirt  |
-|    hosted-worker1   |  down  |                   |                                                    | hosted-ipv4 |  kvirt  |
-|    hosted-worker2   |  down  |                   |                                                    | hosted-ipv4 |  kvirt  |
+|    hosted-worker0   |  down  |                   |                                                    | hosted-ipv6 |  kvirt  |
+|    hosted-worker1   |  down  |                   |                                                    | hosted-ipv6 |  kvirt  |
+|    hosted-worker2   |  down  |                   |                                                    | hosted-ipv6 |  kvirt  |
 +---------------------+--------+-------------------+----------------------------------------------------+-------------+---------+
 ```
 
@@ -46,14 +46,14 @@ This is how looks like:
 In order to delete the VMs you just need to delete the plan, in our case:
 
 ```bash
-kcli delete plan hosted-ipv4
+kcli delete plan hosted-ipv6
 ```
 
 ```bash
-$ kcli delete plan hosted-ipv4
+$ kcli delete plan hosted-ipv6
 Are you sure? [y/N]: y
 hosted-worker0 deleted on local!
 hosted-worker1 deleted on local!
 hosted-worker2 deleted on local!
-Plan hosted-ipv4 deleted!
+Plan hosted-ipv6 deleted!
 ```

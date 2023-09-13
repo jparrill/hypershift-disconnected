@@ -2,10 +2,10 @@ In this section we will focus in all the related objects which they will be nece
 
 **Premises**:
 
-- HostedCluster Name: `hosted-ipv4`
+- HostedCluster Name: `hosted-ipv6`
 - HostedCluster Namespace: `clusters`
 - Disconnected: `true`
-- Network Stack: `IPv4`
+- Network Stack: `ipv6`
 
 ## Openshift Objects
 
@@ -19,7 +19,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: clusters-hosted-ipv4
+  name: clusters-hosted-ipv6
 spec: {}
 status: {}
 ---
@@ -47,7 +47,7 @@ data:
     -----END CERTIFICATE-----
 kind: ConfigMap
 metadata:
-  name: clusters-hosted-ipv4-ca
+  name: clusters-hosted-ipv6-ca
   namespace: clusters
 ---
 apiVersion: v1
@@ -56,13 +56,13 @@ data:
 kind: Secret
 metadata:
   creationTimestamp: null
-  name: hosted-ipv4-pull-secret
+  name: hosted-ipv6-pull-secret
   namespace: clusters
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: sshkey-cluster-hosted-ipv4
+  name: sshkey-cluster-hosted-ipv6
   namespace: clusters
 stringData:
   id_rsa.pub: ssh-rsa xxxxxxxxx
@@ -73,7 +73,7 @@ data:
 kind: Secret
 metadata:
   creationTimestamp: null
-  name: hosted-ipv4-etcd-encryption-key
+  name: hosted-ipv6-etcd-encryption-key
   namespace: clusters
 type: Opaque
 ```
@@ -88,7 +88,7 @@ kind: Role
 metadata:
   creationTimestamp: null
   name: capi-provider-role
-  namespace: clusters-hosted-ipv4
+  namespace: clusters-hosted-ipv6
 rules:
 - apiGroups:
   - agent-install.openshift.io
@@ -106,11 +106,11 @@ This is the HostedCluster Object
 apiVersion: hypershift.openshift.io/v1beta1
 kind: HostedCluster
 metadata:
-  name: hosted-ipv4
+  name: hosted-ipv6
   namespace: clusters
 spec:
   additionalTrustBundle:
-    name: "clusters-hosted-ipv4-ca"
+    name: "clusters-hosted-ipv6-ca"
   olmCatalogPlacement: guest
   imageContentSources:
   - source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
@@ -143,45 +143,45 @@ spec:
     - cidr: 172.31.0.0/16
   platform:
     agent:
-      agentNamespace: clusters-hosted-ipv4
+      agentNamespace: clusters-hosted-ipv6
     type: Agent
   pullSecret:
-    name: hosted-ipv4-pull-secret
+    name: hosted-ipv6-pull-secret
   release:
     image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237 ## CHANGE THIS!!
   secretEncryption:
     aescbc:
       activeKey:
-        name: hosted-ipv4-etcd-encryption-key
+        name: hosted-ipv6-etcd-encryption-key
     type: aescbc
   services:
   - service: APIServer
     servicePublishingStrategy:
       nodePort:
-        address: api.hosted-ipv4.hypershiftbm.lab
+        address: api.hosted-ipv6.hypershiftbm.lab
       type: NodePort
   - service: OAuthServer
     servicePublishingStrategy:
       nodePort:
-        address: api.hosted-ipv4.hypershiftbm.lab
+        address: api.hosted-ipv6.hypershiftbm.lab
       type: NodePort
   - service: OIDC
     servicePublishingStrategy:
       nodePort:
-        address: api.hosted-ipv4.hypershiftbm.lab
+        address: api.hosted-ipv6.hypershiftbm.lab
       type: NodePort
   - service: Konnectivity
     servicePublishingStrategy:
       nodePort:
-        address: api.hosted-ipv4.hypershiftbm.lab
+        address: api.hosted-ipv6.hypershiftbm.lab
       type: NodePort
   - service: Ignition
     servicePublishingStrategy:
       nodePort:
-        address: api.hosted-ipv4.hypershiftbm.lab
+        address: api.hosted-ipv6.hypershiftbm.lab
       type: NodePort
   sshKey:
-    name: sshkey-cluster-hosted-ipv4
+    name: sshkey-cluster-hosted-ipv6
 status:
   controlPlaneEndpoint:
     host: ""
@@ -242,5 +242,5 @@ And this is how the HostedCluster looks like:
 
 ```bash
 NAMESPACE   NAME         VERSION   KUBECONFIG                PROGRESS   AVAILABLE   PROGRESSING   MESSAGE
-clusters    hosted-ipv4            hosted-admin-kubeconfig   Partial    True 	      False         The hosted control plane is available
+clusters    hosted-ipv6            hosted-admin-kubeconfig   Partial    True 	      False         The hosted control plane is available
 ```

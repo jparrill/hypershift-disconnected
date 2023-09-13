@@ -48,7 +48,8 @@ host-record=api.hosted-ipv4.hypershiftbm.lab,192.168.125.21
 host-record=api.hosted-ipv4.hypershiftbm.lab,192.168.125.22
 
 ## Nodeport
-## IMPORTANT!: You should point to the node which is exposing the routed.
+## IMPORTANT!: You should point to the node which is exposing the router.
+## You can also use MetalLB to expose the Apps wildcard.
 address=/apps.hosted-ipv4.hypershiftbm.lab/192.168.125.30
 
 ## General

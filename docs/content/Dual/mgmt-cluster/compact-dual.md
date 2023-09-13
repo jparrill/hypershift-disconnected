@@ -9,18 +9,24 @@ Should be in the same folder as the kcli plan and should take `openshift_pull.js
 
 ### Kcli plan
 
-- `mgmt-compact-hub-ipv4.yaml`
+- `mgmt-compact-hub-dual.yaml`
 
 ```yaml
-plan: hub-ipv6
+plan: hub-dual
 force: true
 version: nightly
 tag: "4.14.0-0.nightly-2023-08-29-102237"
-cluster: "hub-ipv6"
-ipv6: true
+cluster: "hub-dual"
+dualstack: true
 domain: hypershiftbm.lab
-api_ip: 2620:52:0:1306::2
-ingress_ip: 2620:52:0:1306::3
+api_ip: 192.168.126.10
+ingress_ip: 192.168.126.11
+service_networks:
+- 172.30.0.0/16
+- fd02::/112
+cluster_networks:
+- 10.132.0.0/14
+- fd01::/48
 disconnected_url: registry.hypershiftbm.lab:5000 ## CHANGE THIS!
 disconnected_update: true
 disconnected_user: dummy
@@ -35,7 +41,7 @@ disconnected_extra_images:
 - quay.io/mavazque/trbsht:latest
 - quay.io/jparrill/hypershift:BMSelfManage-v4.14-rc-v3
 - registry.redhat.io/openshift4/ose-kube-rbac-proxy:v4.10
-dualstack: false
+dualstack: true
 disk_size: 200
 extra_disks: [200]
 memory: 48000
@@ -44,14 +50,14 @@ ctlplanes: 3
 workers: 0
 manifests: extra-manifests
 metal3: true
-network: ipv6
+network: dual
 users_dev: developer
 users_devpassword: developer
 users_admin: admin
 users_adminpassword: admin
-metallb_pool: ipv6-virtual-network
+metallb_pool: dual-virtual-network
 metallb_ranges:
-- 2620:52:0:1306::150-2620:52:0:1306::190
+- 192.168.126.150-192.168.126.190
 metallb_autoassign: true
 apps:
 - users
@@ -61,19 +67,19 @@ vmrules:
 - hub-bootstrap:
     nets:
     - name: ipv6
-      mac: aa:aa:aa:aa:03:10
+      mac: aa:aa:aa:aa:10:07
 - hub-ctlplane-0:
     nets:
     - name: ipv6
-      mac: aa:aa:aa:aa:03:01
+      mac: aa:aa:aa:aa:10:01
 - hub-ctlplane-1:
     nets:
     - name: ipv6
-      mac: aa:aa:aa:aa:03:02
+      mac: aa:aa:aa:aa:10:02
 - hub-ctlplane-2:
     nets:
     - name: ipv6
-      mac: aa:aa:aa:aa:03:03
+      mac: aa:aa:aa:aa:10:03
 ```
 
 !!! note
@@ -85,5 +91,5 @@ vmrules:
 To start the provisioning procedure we need to execute this:
 
 ```bash
-kcli create cluster openshift --pf mgmt-compact-hub-ipv6.yaml
+kcli create cluster openshift --pf mgmt-compact-hub-dual.yaml
 ```

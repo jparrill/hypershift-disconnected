@@ -3,7 +3,7 @@ Firstly we need to make sure we have the right networks ready to be used in the 
 To configure it we will use this `kcli` command:
 
 ```
-kcli create network -c 2620:52:0:1306::0/64 -P dhcp=false -P dns=false --domain ipv6.lab --nodhcp ipv6
+kcli create network -c 2620:52:0:1305::0/64 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv6
 ```
 
 Where:
@@ -23,15 +23,15 @@ Listing Networks...
 | Network |  Type  |         Cidr        |  Dhcp |      Domain      | Mode |
 +---------+--------+---------------------+-------+------------------+------+
 | default | routed |   192.168.122.0/24  |  True |     default      | nat  |
-| ipv4    | routed |   192.168.125.0/24  | False | hypershiftbm.lab | nat  |
-| ipv6    | routed | 2620:52:0:1306::/64 | False | hypershiftbm.lab | nat  |
+| ipv6    | routed |   192.168.125.0/24  | False | hypershiftbm.lab | nat  |
+| ipv6    | routed | 2620:52:0:1305::/64 | False | hypershiftbm.lab | nat  |
 +---------+--------+---------------------+-------+------------------+------+
 ```
 
 ```
 [root@hypershiftbm ~]# kcli info network ipv6
 Providing information about network ipv6...
-cidr: 2620:52:0:1306::/64
+cidr: 2620:52:0:1305::/64
 dhcp: false
 domain: hypershiftbm.lab
 mode: nat

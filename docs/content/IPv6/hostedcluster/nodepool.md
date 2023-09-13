@@ -7,11 +7,11 @@ apiVersion: hypershift.openshift.io/v1beta1
 kind: NodePool
 metadata:
   creationTimestamp: null
-  name: hosted-ipv4
+  name: hosted-ipv6
   namespace: clusters
 spec:
   arch: amd64
-  clusterName: hosted-ipv4
+  clusterName: hosted-ipv6
   management:
     autoRepair: false
     upgradeType: InPlace
@@ -44,7 +44,7 @@ And this is how the NodePool looks like (at this point):
 
 ```bash
 NAMESPACE   NAME          CLUSTER   DESIRED NODES   CURRENT NODES   AUTOSCALING   AUTOREPAIR   VERSION                              UPDATINGVERSION   UPDATINGCONFIG   MESSAGE
-clusters    hosted-ipv4   hosted    0                               False         False        4.14.0-0.nightly-2023-08-29-102237
+clusters    hosted-ipv6   hosted    0                               False         False        4.14.0-0.nightly-2023-08-29-102237
 ```
 
 !!! important

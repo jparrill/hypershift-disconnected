@@ -77,6 +77,7 @@ nav:
     - 'Worker Nodes': IPv4/hostedcluster/worker-nodes.md
     - 'Bare Metal Hosts': IPv4/hostedcluster/baremetalhost.md
   - 'Finishing Deployment':
+    - IPv4/watching/watching-cp.md
     - 'Watching the Control Plane': IPv4/watching/watching-cp.md
     - 'Watching the Data Plane': IPv4/watching/watching-dp.md
 
@@ -113,8 +114,43 @@ nav:
     - 'Worker Nodes': IPv6/hostedcluster/worker-nodes.md
     - 'Bare Metal Hosts': IPv6/hostedcluster/baremetalhost.md
   - 'Finishing Deployment':
+    - IPv6/watching/index.md
     - 'Watching the Control Plane': IPv6/watching/watching-cp.md
     - 'Watching the Data Plane': IPv6/watching/watching-dp.md
 
 - 'Dual Stack':
   - Dual/index.md
+  - 'Hypervisor':
+    - Dual/hypervisor/index.md
+    - 'Bare Metal Requisites': Dual/hypervisor/requisites.md
+    - 'Packaging': Dual/hypervisor/packaging.md
+    - 'Network Manager Dispatcher': Dual/hypervisor/network-manager-dispatcher.md
+    - 'BMC Access for Metal3': Dual/hypervisor/redfish-for-vms.md
+    - Dual/hypervisor/hypervisor-system-config.md
+  - Dual/dns.md
+  - Dual/registry.md
+  - 'Management Cluster':
+    - 'Management Cluster Provisioning': Dual/mgmt-cluster/index.md
+    - 'Networking': Dual/mgmt-cluster/network.md
+    - 'Openshift Compact Dual': Dual/mgmt-cluster/compact-dual.md
+  - Dual/webserver.md
+  - 'Mirroring and Image Content Sources':
+    - Dual/mirror/index.md
+    - 'Mirroring': Dual/mirror/mirroring.md
+    - 'Image Content Policies': Dual/mirror/ICSP-IDMS.md
+  - 'Multicluster Engine':
+    - 'Multicluster Engine': Dual/mce/index.md
+    - 'ACM/MCE Deployment': Dual/mce/multicluster-engine.md
+    - 'Agent Service Config': Dual/mce/agentserviceconfig.md
+  - 'TLS Certificates': Dual/tls-certificates.md
+  - 'HostedCluster':
+    - 'Hosted Cluster Creation': Dual/hostedcluster/index.md
+    - 'Hosted Cluster Object': Dual/hostedcluster/hostedcluster.md
+    - 'Node Pools': Dual/hostedcluster/nodepool.md
+    - 'Infra Env': Dual/hostedcluster/infraenv.md
+    - 'Worker Nodes': Dual/hostedcluster/worker-nodes.md
+    - 'Bare Metal Hosts': Dual/hostedcluster/baremetalhost.md
+  - 'Finishing Deployment':
+    - Dual/watching/index.md
+    - 'Watching the Control Plane': Dual/watching/watching-cp.md
+    - 'Watching the Data Plane': Dual/watching/watching-dp.md

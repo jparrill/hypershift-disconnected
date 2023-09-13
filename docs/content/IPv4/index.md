@@ -6,12 +6,15 @@ This is one of the most easiest network configurations for this kind of deployme
 
 All the scripts provided will hold part or the whole automation to reproduce the environment. To do that this is the repository holding all the scripts for [IPv4 environments](https://github.com/jparrill/hypershift-disconnected/tree/main/assets/ipv4).
 
+This documentation is prepared to be followed in a concrete order:
+
 - [Hypervisor](hypervisor/)
-- [Registry](registry/)
-- [Management Cluster](management-cluster/)
-- [Webserver](webserver/)
+- [DNS](dns.md)
+- [Registry](registry.md)
+- [Management Cluster](mgmt-cluster/)
+- [Webserver](webserver.md)
 - [Mirroring](mirror/)
-- [ICPS/IDSM](icsp/)
 - [Multicluster Engine](mce/)
-- [TLS Certificates](tls-certificates/)
+- [TLS Certificates](tls-certificates.md)
 - [HostedCluster](hostedcluster/)
+- [Watching Deployment progress](watching/)

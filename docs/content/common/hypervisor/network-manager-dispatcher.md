@@ -7,7 +7,7 @@ To enable this, we need to create an script in `/etc/NetworkManager/dispatcher.d
     ```bash
     #!/bin/bash
 
-    export IP="192.168.125.1" ## CHANGE THIS!
+    export IP="192.168.126.1" ## CHANGE THIS!
     export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
     if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then

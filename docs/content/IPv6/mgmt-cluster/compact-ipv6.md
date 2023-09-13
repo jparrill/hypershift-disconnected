@@ -9,7 +9,7 @@ Should be in the same folder as the kcli plan and should take `openshift_pull.js
 
 ### Kcli plan
 
-- `mgmt-compact-hub-ipv4.yaml`
+- `mgmt-compact-hub-ipv6.yaml`
 
 ```yaml
 plan: hub-ipv6
@@ -19,8 +19,8 @@ tag: "4.14.0-0.nightly-2023-08-29-102237"
 cluster: "hub-ipv6"
 ipv6: true
 domain: hypershiftbm.lab
-api_ip: 2620:52:0:1306::2
-ingress_ip: 2620:52:0:1306::3
+api_ip: 2620:52:0:1305::2
+ingress_ip: 2620:52:0:1305::3
 disconnected_url: registry.hypershiftbm.lab:5000 ## CHANGE THIS!
 disconnected_update: true
 disconnected_user: dummy
@@ -51,7 +51,7 @@ users_admin: admin
 users_adminpassword: admin
 metallb_pool: ipv6-virtual-network
 metallb_ranges:
-- 2620:52:0:1306::150-2620:52:0:1306::190
+- 2620:52:0:1305::150-2620:52:0:1305::190
 metallb_autoassign: true
 apps:
 - users
