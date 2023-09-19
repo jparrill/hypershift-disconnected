@@ -1,13 +1,17 @@
-This is a script which modifies the system DNS resolver to point firstly to the dnsmasq (configured later). This will allow the virtual machines to resolve the different domains, routes and registries you will need for the different steps of the process.
+This script modifies the system DNS resolver to prioritize pointing to the `dnsmasq` service (configured later). This ensures that virtual machines can resolve the various domains, routes, and registries required for the different steps of the process.
 
-To enable this, we need to create an script in `/etc/NetworkManager/dispatcher.d/` called `forcedns`, and it will have this content:
+To enable this, you need to create a script named `forcedns` in `/etc/NetworkManager/dispatcher.d/` with the following content:
+
+!!! note
+
+    Please ensure you modify the appropriate fields to align with your laboratory environment.
 
 === "IPv4"
 
     ```bash
     #!/bin/bash
 
-    export IP="192.168.126.1" ## CHANGE THIS!
+    export IP="192.168.126.1"
     export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
     if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
@@ -25,7 +29,7 @@ To enable this, we need to create an script in `/etc/NetworkManager/dispatcher.d
     ```bash
     #!/bin/bash
 
-    export IP="2620:52:0:1306::1" ## CHANGE THIS!
+    export IP="2620:52:0:1306::1"
     export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
     if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
@@ -43,7 +47,7 @@ To enable this, we need to create an script in `/etc/NetworkManager/dispatcher.d
     ```bash
     #!/bin/bash
 
-    export IP="192.168.126.1" ## CHANGE THIS!
+    export IP="192.168.126.1"
     export BASE_RESOLV_CONF="/run/NetworkManager/resolv.conf"
 
     if ! [[ `grep -q "$IP" /etc/resolv.conf` ]]; then
@@ -56,6 +60,13 @@ To enable this, we need to create an script in `/etc/NetworkManager/dispatcher.d
     echo "ok"
     ```
 
-The `IP` variable at first part of the script needs to be changed to point to the IP of the Hypervisor's interface hosting the Openshift management cluster.
+The `IP` variable at the beginning of the script must be modified to point to the IP address of the Hypervisor's interface hosting the Openshift management cluster.
 
-After the file creation, we need to add execution permissions `chmod 755 /etc/NetworkManager/dispatcher.d/forcedns` and then execute it initially once. The output should show `ok`.
+After creating the file, you need to add execution permissions using the command:
+
+```bash
+chmod 755 /etc/NetworkManager/dispatcher.d/forcedns
+```
+
+Then, execute it once. The output should indicate `ok`.
+

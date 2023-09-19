@@ -7,18 +7,20 @@ title: Home
 HyperShift is middleware for hosting [OpenShift](https://www.openshift.com/) control planes at scale that solves for cost and time to provision, as well as portability cross cloud with strong separation of concerns between management and workloads.
 Clusters are fully compliant [OpenShift Container Platform](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform) (OCP) clusters and are compatible with standard OCP and Kubernetes toolchains.
 
-Disconnected, on premises, in-house, it has multiple names but it references all the Openshift deployments that are not connected to internet and in this case using Hypershift as a base.
+Within this section, our primary focus revolves around the various deployment methods available for Hosted Clusters, leveraging MCE as a foundational framework. The inclusion of the Hypershift release is planned in MCE's payload, starting from version 2.4, and will be fully integrated by version 2.9 in ACM.
 
-The main purpose of this documentation is spread the technical details about the self-managed deployments on bare metal servers (or virtual Machines) focusing on the 3 networking different configurations:
+In this segment of the documentation, we will delve into both Connected and Disconnected deployment modes, exploring their respective configurations related to Network stacks:
 
 - IPv4
 - IPv6
-- Dual stack
+- Dual Stack
 
-Each ones has their particularities and details, so we will do a deep dive on all topics, from the Node/Hypervisor configuration, until the artifacts involved in the deployment.
+Each of these modes possesses its unique characteristics and intricacies, which will be thoroughly examined—from the Node/Hypervisor configuration to the artifacts entailed in the deployment process.
 
-[IPv4](IPv4/){ .md-button }
-[IPv6](IPv6/){ .md-button }
-[Dual stack](Dual/){ .md-button }
+For more information on specific topics, please refer to the following links:
 
-This documentation will be focused in Virtual Machines but it's expandable to bare metal nodes, we will remark the different aspects of each kind of deployment.
+- [IPv4](IPv4/){ .md-button }
+- [IPv6](IPv6/){ .md-button }
+- [Dual Stack](Dual/){ .md-button }
+
+While our primary focus in this documentation is Virtual Machines, it is important to note that the principles discussed herein are equally applicable to bare metal nodes. We will duly emphasize the distinct considerations associated with each type of deployment.

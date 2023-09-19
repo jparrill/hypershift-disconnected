@@ -1,4 +1,4 @@
-InfraEnv is a Assisted Service object which include details like the `pullSecretRef` and the `sshAuthorizedKey` that will be used to create the RHCOS Boot Image customized for that cluster. This is how the object looks like:
+The `InfraEnv` is an Assisted Service object that includes essential details such as the `pullSecretRef` and the `sshAuthorizedKey`. These details are used to create the RHCOS Boot Image customized specifically for the cluster. Below is the structure of this object:
 
 ```yaml
 ---
@@ -15,10 +15,10 @@ spec:
 
 **Details**:
 
-- `pullSecretRef` Is the ConfigMap reference (in the same Namespace) where the PullSecret will be used.
-- `sshAuthorizedKey` Is the SSH Public key that will be inyected in the Boot Image. This SSH key will be allowed by default to log in the worker nodes as `core` user.
+- `pullSecretRef` refers to the ConfigMap reference (in the same Namespace as the InfraEnv) where the PullSecret will be utilized.
+- `sshAuthorizedKey` represents the SSH Public key that will be injected into the Boot Image. This SSH key will, by default, allow access to the worker nodes as the `core` user.
 
-To deploy this object we just need to use the same procedure as before:
+To deploy this object, follow the same procedure as before:
 
 ```bash
 oc apply -f 03-infraenv.yaml

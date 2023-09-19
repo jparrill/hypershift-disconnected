@@ -1,6 +1,6 @@
 ## Bare Metal Hosts
 
-BareMetalHost is an openshift-machine-api object where we include some physical and logical details to be identified by the Metal3 operator that afterwards will be linked with other Assisted Service objects called Agents. This is how the object looks like:
+A **BareMetalHost** is an openshift-machine-api object that encompasses both physical and logical details, allowing it to be identified by the Metal3 operator. Subsequently, these details are associated with other Assisted Service objects known as Agents. The structure of this object is as follows:
 
 ```yaml
 ---
@@ -36,21 +36,23 @@ spec:
 
 **Details**:
 
-- We will have at least 1 secret which holds the BMH credentials, so we will need to create at least 2 objects per worker node.
-- `spec.metadata.labels["infraenvs.agent-install.openshift.io"]` Is the link between the Assisted Installer and the BareMetalHost objects.
-- `spec.metadata.annotations["bmac.agent-install.openshift.io/hostname"]` Is the node name it will take on deployment.
-- `spec.automatedCleaningMode` prevents the node to be erased by the Metal3 operator.
-- `spec.bmc.disableCertificateVerification` Is set to `true`` avoid the certification validation from the client.
-- `spec.bmc.address` Is the BMC address of the worker node.
-- `spec.bmc.credentialsName` Is the Secret where the User/Password credentials are stored.
-- `spec.bootMACAddress` Is the interface MacAddress where the node will be boot from.
-- `spec.online` Is the way we want the node once the BMH object is created.
+- We will have at least 1 secret that holds the BMH credentials, so we will need to create at least 2 objects per worker node.
+- `spec.metadata.labels["infraenvs.agent-install.openshift.io"]` serves as the link between the Assisted Installer and the BareMetalHost objects.
+- `spec.metadata.annotations["bmac.agent-install.openshift.io/hostname"]` represents the node name it will adopt during deployment.
+- `spec.automatedCleaningMode` prevents the node from being erased by the Metal3 operator.
+- `spec.bmc.disableCertificateVerification` is set to `true` to bypass certificate validation from the client.
+- `spec.bmc.address` denotes the BMC address of the worker node.
+- `spec.bmc.credentialsName` points to the Secret where User/Password credentials are stored.
+- `spec.bootMACAddress` indicates the interface MACAddress from which the node will boot.
+- `spec.online` defines the desired state of the node once the BMH object is created.
 
-To deploy this object we just need to use the same procedure as before:
+To deploy this object, simply follow the same procedure as before:
 
 !!! important
 
-    If we create the BareMetalHost and the destination Nodes are not in place (thinking of VirtualMachines), please make sure you create first the Virtual Machines.
+    Please create the virtual machines before you create the BareMetalHost and the destination Nodes.
+
+To deploy the BareMetalHost object, execute the following command:
 
 ```bash
 oc apply -f 04-bmh.yaml
@@ -84,7 +86,7 @@ clusters-hosted   hosted-worker2   provisioned              true             67s
 
 ## Agents registration
 
-After the Nodes boot, we will see some agents appearing in the namespace
+After the nodes have booted up, you will observe the appearance of agents within the namespace.
 
 ```
 NAMESPACE         NAME                                   CLUSTER   APPROVED   ROLE          STAGE
@@ -93,21 +95,21 @@ clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0412             true       au
 clusters-hosted   aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0413             true       auto-assign
 ```
 
-These agents represent the nodes that are available for an installation. To assign them to a HostedCluster we need to scale up the NodePool.
+These agents represent the nodes available for installation. To assign them to a HostedCluster, scale up the NodePool.
 
-## Scaling up the Nodepool
+## Scaling Up the Nodepool
 
-Once we have the BareMetalHosts created, the statuses of these BareMetalHost will transition from `Registering` (Trying to reach the Node's BMC) to `Provisioning` (Booting up the node) and finally to `Provisioned` (The node has been booted properly).
+Once we have the BareMetalHosts created, the statuses of these BareMetalHosts will transition from `Registering` (Attempting to reach the Node's BMC) to `Provisioning` (Node Booting Up), and finally to `Provisioned` (Successful node boot-up).
 
-The nodes will boot with the Agent's RHCOS LiveISO and with a pod running by default called "agent". This agent is the piece in the node that will receive the steps from the Assisted Service Operator to install Openshift payload.
+The nodes will boot with the Agent's RHCOS LiveISO and a default pod named "agent." This agent is responsible for receiving instructions from the Assisted Service Operator to install the Openshift payload.
 
-To do so we just need to execute this command:
+To accomplish this, execute the following command:
 
 ```bash
 oc -n clusters scale nodepool hosted-dual --replicas 3
 ```
 
-After the nodepool scalation we can see the agents are assigned to a Hosted Cluster
+After the NodePool scaling, you will notice that the agents are assigned to a Hosted Cluster.
 
 ```
 NAMESPACE         NAME                                   CLUSTER   APPROVED   ROLE          STAGE
@@ -123,4 +125,4 @@ NAMESPACE   NAME     CLUSTER   DESIRED NODES   CURRENT NODES   AUTOSCALING   AUT
 clusters    hosted   hosted    3                               False         False        4.14.0-0.nightly-2023-08-29-102237                                      Minimum availability requires 3 replicas, current 0 available
 ```
 
-So now we need to wait until the Nodes join the cluster. The Agents will give you some hints about in which stage they are and what is the status. Initially they does not post any status, but eventually they will.
+So now, we need to wait until the nodes join the cluster. The Agents will provide updates on their current stage and status. Initially, they may not post any status, but eventually, they will.

@@ -1,4 +1,4 @@
-This section is purely done to let you know how we should monitoring the deployment of a HostedCluster from 2 perspectives:
+This section is purely done to let you know how we should monitor the deployment of a HostedCluster from two perspectives:
 
 - Control Plane
 - Data Plane

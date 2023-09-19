@@ -1,10 +1,10 @@
 !!! important
 
-    This section is only relevant in disconnected scenarios, if this is not your case, you can continue with the next section
+    This section is only relevant in disconnected scenarios. If this does not apply to your situation, you can continue with the next section.
 
-The image mirroring it's basically the process to grab the images from the external registries like registry.redhat.com or quay.io to your private registry.
+Image mirroring is the process of fetching images from external registries, such as registry.redhat.com or quay.io, and storing them in your private registry.
 
-In order to know how to do this follow the nexts sections:
+To learn how to perform image mirroring, follow the next sections:
 
 [Image Mirroring Process](mirroring.md){ .md-button }
 [ICSP and IDMS](ICSP-IDMS.md){ .md-button }

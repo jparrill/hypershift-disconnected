@@ -1,6 +1,6 @@
-The DNS part it's one of the mosts critical parts. To configure the name resolution in our virtualized environment we will need to:
+The DNS configuration is a critical aspect of our setup. To enable name resolution in our virtualized environment, follow these steps:
 
-Create the DNS main configuration for the dnsmasq server:
+1. Create the primary DNS configuration file for the dnsmasq server:
 
 - `/opt/dnsmasq/dnsmasq.conf`
 ```conf
@@ -10,7 +10,7 @@ bind-dynamic
 bogus-priv
 dhcp-authoritative
 
-#BM Network IPv6
+# BM Network IPv6
 dhcp-range=ipv6,2620:52:0:1305::11,2620:52:0:1305::20,64
 dhcp-option=ipv6,option6:dns-server,2620:52:0:1305::1
 
@@ -68,7 +68,7 @@ dhcp-host=aa:aa:aa:aa:03:07,ocp-bootstrap,[2620:52:0:1305::9]
 host-record=registry.hypershiftbm.lab,2620:52:0:1305::1
 ```
 
-Now we need to create the systemd service to manage this dnsmasq and disable the system one:
+To proceed, we must create a systemd service for the management of the dnsmasq service and disable the system's default dnsmasq service:
 
 - `/etc/systemd/system/dnsmasq-virt.service`
 ```
@@ -95,4 +95,4 @@ systemctl enable --now dnsmasq-virt
 
 !!! note
 
-    This step is required for **Disconnected** and **Connected** environments, also this is relevant for **Virtualized** or **Bare Metal** environments. The only difference is where the resources will be configured, in a non virtualized environment is necessary something more reliable that a small dnsmasq (e.i Bind).
+    This step is mandatory for both Disconnected and Connected environments. Additionally, it holds significance for both Virtualized and Bare Metal environments. The key distinction lies in the location where the resources will be configured. In a non-virtualized environment, a more robust solution like Bind is recommended instead of a lightweight dnsmasq.

@@ -2,11 +2,11 @@
 title: Dual Stack
 ---
 
-This network configuration is (for now) by definition disconnected. The main reason is because the remote registries cannot work with IPv6 so we will include this part in the documentation.
+This network configuration is currently designated as disconnected. The primary reason for this designation is because remote registries do not function with IPv6. Consequently, this aspect has been incorporated into the documentation.
 
-All the scripts provided will hold part or the whole automation to reproduce the environment. To do that this is the repository holding all the scripts for [Dual Stack environments](https://github.com/jparrill/hypershift-disconnected/tree/main/assets/dual).
+All the scripts provided contain partial or complete automation to replicate the environment. For this purpose, you can refer to the repository containing all the scripts for [Dual Stack environments](https://github.com/jparrill/hypershift-disconnected/tree/main/assets/dual).
 
-This documentation is prepared to be followed in a concrete order:
+Please note that this documentation is designed to be followed in a specific sequence:
 
 - [Hypervisor](hypervisor/)
 - [DNS](dns.md)

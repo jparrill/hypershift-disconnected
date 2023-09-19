@@ -4,13 +4,13 @@ title: Hypervisor Packaging
 
 ## System
 
-These are the main packages that are needed to deploy a virtualized Openshift Management cluster
+These are the main packages that are needed to deploy a virtualized Openshift Management cluster.
 
 ```bash
 sudo dnf install dnsmasq radvd vim golang podman bind-utils net-tools httpd-tools tree htop strace tmux -y
 ```
 
-also we need to enable and start Podman service
+Additionally, you need to enable and start the Podman service using the following command:
 
 ```bash
 systemctl enable --now podman
@@ -18,7 +18,7 @@ systemctl enable --now podman
 
 ## Kcli
 
-We will use [Kcli](https://kcli.readthedocs.io/en/latest/) to deploy the Openshift Management cluster and some other virtualized components. For that we will need to install and configure the hypervisor with these commands:
+We will utilize [Kcli](https://kcli.readthedocs.io/en/latest/) to deploy the Openshift Management cluster and various other virtualized components. To do so, you'll need to install and configure the hypervisor using the following commands:
 
 ```bash
 sudo yum -y install libvirt libvirt-daemon-driver-qemu qemu-kvm

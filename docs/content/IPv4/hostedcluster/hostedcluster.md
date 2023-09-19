@@ -1,5 +1,4 @@
-In this section we will focus in all the related objects which they will be necessary to achieve a Disconnected Hosted Cluster deployment.
-
+In this section, we will focus on all the related objects necessary to achieve a Disconnected Hosted Cluster deployment.
 **Premises**:
 
 - HostedCluster Name: `hosted-ipv4`
@@ -11,7 +10,7 @@ In this section we will focus in all the related objects which they will be nece
 
 ### Namespaces
 
-The operator in a usual situation will be in charge of create the HCP (HostedControlPlane) namespace, but in this case we want to include all the objects prior the operator to reconcicle over the HostedCluster object. This way when the operator begins the reconcilliation, it will find all the objects in place.
+In a typical situation, the operator would be responsible for creating the HCP (HostedControlPlane) namespace. However, in this case, we want to include all the objects before the operator begins reconciliation over the HostedCluster object. This way, when the operator commences the reconciliation process, it will find all the objects in place.
 
 ```yaml
 ---
@@ -32,11 +31,13 @@ spec: {}
 status: {}
 ```
 
-We will not create object by object but, concatenante all of them in the same file and apply them with just 1 command.
+!!! note
+
+      We will **not** create objects one by one but will concatenate all of them in the same file and apply them with just one command.
 
 ### ConfigMap and Secrets
 
-These are the ConfigMaps and Secrets which we will include in the HostedCluster deployment.
+These are the ConfigMaps and Secrets that we will include in the HostedCluster deployment.
 
 ```yaml
 ---
@@ -47,7 +48,7 @@ data:
     -----END CERTIFICATE-----
 kind: ConfigMap
 metadata:
-  name: clusters-hosted-ipv4-ca
+  name: user-ca-bundle
   namespace: clusters
 ---
 apiVersion: v1
@@ -80,7 +81,7 @@ type: Opaque
 
 ### RBAC Roles
 
-This is not mandatory, but it allow us to have the Assisted Service Agents located in the same HostedControlPlane namespace than the HostedControlPlane and still be managed by CAPI.
+While not mandatory, it allows us to have the Assisted Service Agents located in the same HostedControlPlane namespace as the HostedControlPlane and still be managed by CAPI.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -100,7 +101,11 @@ rules:
 
 ### Hosted Cluster
 
-This is the HostedCluster Object
+This is a sample of the HostedCluster Object
+
+!!! note
+
+    Please ensure you modify the appropriate fields to align with your laboratory environment.
 
 ```yaml
 apiVersion: hypershift.openshift.io/v1beta1
@@ -110,7 +115,7 @@ metadata:
   namespace: clusters
 spec:
   additionalTrustBundle:
-    name: "clusters-hosted-ipv4-ca"
+    name: "user-ca-bundle"
   olmCatalogPlacement: guest
   imageContentSources:
   - source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
@@ -148,7 +153,7 @@ spec:
   pullSecret:
     name: hosted-ipv4-pull-secret
   release:
-    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237 ## CHANGE THIS!!
+    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237
   secretEncryption:
     aescbc:
       activeKey:
@@ -188,11 +193,15 @@ status:
     port: 0
 ```
 
-As you can see, all the objects created before are referenced here and also you can check the documentation [where all the fields are described](https://hypershift-docs.netlify.app/reference/api/#hypershift.openshift.io%2fv1beta1)
+!!! note
+
+    The `imageContentSources` section within the `spec` field contains mirror references for user workloads within the HostedCluster.
+
+As you can see, all the objects created before are referenced here. You can also refer to the [documentation](https://hypershift-docs.netlify.app/reference/api/#hypershift.openshift.io%2fv1beta1) where all the fields are described.
 
 ## Deployment
 
-In order to deploy them, you just need to concatenate them in the same file and apply them against the management cluster:
+To deploy these objects, simply concatenate them into the same file and apply them against the management cluster:
 
 ```bash
 oc apply -f 01-4.14-hosted_cluster-nodeport.yaml
@@ -236,11 +245,11 @@ openshift-route-controller-manager-5f6997b48f-s9vdc   1/1     Running   0       
 packageserver-67c87d4d4f-kl7qh                        2/2     Running   0          93s
 ```
 
-After some time, we will have almost all the pieces in place and the Control Plane operator awaits for the worker nodes to join the cluster, to do so we need to create some more objects, let's talk about the `InfraEnv` and the `BareMetalHost` in the nexts sections.
-
 And this is how the HostedCluster looks like:
 
 ```bash
 NAMESPACE   NAME         VERSION   KUBECONFIG                PROGRESS   AVAILABLE   PROGRESSING   MESSAGE
 clusters    hosted-ipv4            hosted-admin-kubeconfig   Partial    True 	      False         The hosted control plane is available
 ```
+
+After some time, we will have almost all the pieces in place, and the Control Plane operator awaits for the worker nodes to join the cluster. To achieve this, we need to create some more objects. Let's discuss the `InfraEnv` and the `BareMetalHost` in the following sections.

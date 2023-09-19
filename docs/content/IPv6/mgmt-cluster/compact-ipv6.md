@@ -1,13 +1,21 @@
-In this section we will talk about how to deploy the Openshift management cluster. To do that we will need some files in place:
+In this section, we will discuss how to deploy the Openshift management cluster. To do that, we need to have the following files in place:
 
-- The pull secret to pull images from the source registry
-- The kcli plan which contains the Openshift definition
+1. **Pull Secret**
+2. **Kcli Plan**
+
+Ensure that these files are properly set up for the deployment process.
 
 ### Pull Secret
 
-Should be in the same folder as the kcli plan and should take `openshift_pull.json` as a name.
+The Pull Secret should be located in the same folder as the kcli plan and should be named `openshift_pull.json`.
 
 ### Kcli plan
+
+The Kcli plan contains the Openshift definition. This is how looks like:
+
+!!! note
+
+    Please ensure you modify the appropriate fields to align with your laboratory environment.
 
 - `mgmt-compact-hub-ipv6.yaml`
 
@@ -21,7 +29,7 @@ ipv6: true
 domain: hypershiftbm.lab
 api_ip: 2620:52:0:1305::2
 ingress_ip: 2620:52:0:1305::3
-disconnected_url: registry.hypershiftbm.lab:5000 ## CHANGE THIS!
+disconnected_url: registry.hypershiftbm.lab:5000
 disconnected_update: true
 disconnected_user: dummy
 disconnected_password: dummy
@@ -78,11 +86,11 @@ vmrules:
 
 !!! note
 
-    In order to know what means each of this parameters you can check the official documentation [here](https://kcli.readthedocs.io/en/latest/#how-to-use)
+    To understand the meaning of each of these parameters, you can refer to the official documentation [here](https://kcli.readthedocs.io/en/latest/#how-to-use).
 
 ### Deployment
 
-To start the provisioning procedure we need to execute this:
+To initiate the provisioning procedure, execute the following:
 
 ```bash
 kcli create cluster openshift --pf mgmt-compact-hub-ipv6.yaml

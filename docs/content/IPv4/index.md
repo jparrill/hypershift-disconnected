@@ -2,11 +2,11 @@
 title: IPv4
 ---
 
-This is one of the most easiest network configurations for this kind of deployment, we will keep us focus on IPv4 ranges and we will need less external elements than IPv6 or Dual.
+This is one of the simplest network configurations for this type of deployment. We will primarily focus on IPv4 ranges, requiring fewer external components than IPv6 or dual-stack setups.
 
-All the scripts provided will hold part or the whole automation to reproduce the environment. To do that this is the repository holding all the scripts for [IPv4 environments](https://github.com/jparrill/hypershift-disconnected/tree/main/assets/ipv4).
+All the scripts provided contain either partial or complete automation to recreate the environment. To follow along, refer to the repository containing all the scripts for [IPv4 environments](https://github.com/jparrill/hypershift-disconnected/tree/main/assets/ipv4).
 
-This documentation is prepared to be followed in a concrete order:
+This documentation is structured to be followed in a specific order:
 
 - [Hypervisor](hypervisor/)
 - [DNS](dns.md)

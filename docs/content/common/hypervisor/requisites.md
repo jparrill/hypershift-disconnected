@@ -2,17 +2,20 @@
 title: Hypervisor Prerequisites
 ---
 
-- **CPU**: As much CPUs we can provide, more HostedCluster could be running at the same time.
-    - **Recommended**: 16 CPUs/Node for 3 nodes.
-    - **Minimal Dev**: If you are working on a development environment maybe you can work fine with 12 CPUs/Node for 3 nodes.
-- **Memory**: As much RAM we can provide, more HostedCluster could be hosted.
-    - **Recommended**: 48 Gb of RAM/Node
-    - **Minimal Dev**: 18 Gb of RAM/Node
-- **Storage**: It's key to use SSD as a storage to host MCE
-    - **Management Cluster**: 250 Gb
-    - **Registry**: Depends on how many releases/operators/images you will host. An acceptable number could be 500Gb and preferibly separated from the disk where the HostedCluster is hosted.
-    - **Webserver**: Depends on how many isos/images you will host An acceptable number could be 500Gb.
-    - **Production**: For a production environment we want to keep separated all 3 mentioned things in their different disks. A good configuration for Production is:
-        - **Registry** we will use 2Tb
-        - **Management Cluster** is fine with 500Gb.
-        - **WebServer** will be enough with 2Tb.
+- **CPU**: The number of CPUs provided determines how many HostedClusters can run concurrently.
+  - **Recommended**: 16 CPUs per Node for 3 nodes.
+  - **Minimal Dev**: In a development environment, you may manage with 12 CPUs per Node for 3 nodes.
+
+- **Memory**: The amount of RAM impacts how many HostedClusters can be hosted.
+  - **Recommended**: 48 GB of RAM per Node.
+  - **Minimal Dev**: For minimal development, 18 GB of RAM per Node may suffice.
+
+- **Storage**: Using SSD storage for MCE is crucial.
+  - **Management Cluster**: 250 GB.
+  - **Registry**: Depends on the number of releases, operators, and images hosted. An acceptable number could be 500 GB, preferably separated from the disk where the HostedCluster is hosted.
+  - **Webserver**: The required storage depends on the number of ISOs and images hosted. An acceptable number could be 500 GB.
+
+- **Production**: For a production environment, it's advisable to keep these three components separated on different disks. A recommended configuration for production is as follows:
+  - **Registry**: 2 TB.
+  - **Management Cluster**: 500 GB.
+  - **WebServer**: 2 TB.

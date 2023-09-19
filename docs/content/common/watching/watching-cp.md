@@ -1,4 +1,4 @@
-Now it's matter of waiting for the cluster to finish the deployment, so let's take a look to some useful commands in the Management cluster side:
+Now it's a matter of waiting for the cluster to finish the deployment, so let's take a look at some useful commands on the Management cluster side:
 
 ```bash
 export KUBECONFIG=/root/.kcli/clusters/hub-ipv4/auth/kubeconfig
@@ -15,6 +15,6 @@ This command will give you info about:
 - The Infraenv
 - The HostedCluster and NodePool
 
-This is how looks like:
+This is how it looks:
 
 ![img](/images/watch-cp.png)

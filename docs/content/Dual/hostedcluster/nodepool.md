@@ -1,6 +1,10 @@
-NodePool is a scalable set of worker nodes attached to a HostedCluster. NodePool machine architectures are uniform within a given pool, and are independent of the control plane’s underlying machine architecture.
+A `NodePool` is a scalable set of worker nodes associated with a HostedCluster. NodePool machine architectures remain consistent within a specific pool and are independent of the underlying machine architecture of the control plane.
 
-This is how looks like:
+!!! note
+
+    Please ensure you modify the appropriate fields to align with your laboratory environment.
+
+This is how one looks like:
 
 ```yaml
 apiVersion: hypershift.openshift.io/v1beta1
@@ -19,7 +23,7 @@ spec:
   platform:
     type: Agent
   release:
-    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237 ## CHANGE THIS!!
+    image: registry.hypershiftbm.lab:5000/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237
   replicas: 0
 status:
   replicas: 0
@@ -27,20 +31,20 @@ status:
 
 **Details**:
 
-- All the nodes included in this NodePool will be based on Openshift `4.14.0-0.nightly-2023-08-29-102237` version.
-- The Upgrade type is set to `InPlace` which means that the same bare metal node will be re-used on a upgrade situation.
-- Autorepair is set to `false` because the node will not be recreated when this dissapear.
-- Replicas is set to `0` because we want to scale them in the right moment.
+- All the nodes included in this NodePool will be based on the Openshift version `4.14.0-0.nightly-2023-08-29-102237`.
+- The Upgrade type is set to `InPlace`, indicating that the same bare-metal node will be reused during an upgrade.
+- Autorepair is set to `false` because the node will not be recreated when it disappears.
+- Replicas are set to `0` because we intend to scale them when needed.
 
-This is the [NodePool documentation](https://hypershift-docs.netlify.app/reference/api/#hypershift.openshift.io%2fv1beta1)
+You can find more information about NodePool in the [NodePool documentation](https://hypershift-docs.netlify.app/reference/api/#hypershift.openshift.io%2fv1beta1).
 
-To deploy this object we just need to use the same procedure as before:
+To deploy this object, simply follow the same procedure as before:
 
 ```bash
 oc apply -f 02-nodepool.yaml
 ```
 
-And this is how the NodePool looks like (at this point):
+And this is how the NodePool looks like at this point:
 
 ```bash
 NAMESPACE   NAME          CLUSTER   DESIRED NODES   CURRENT NODES   AUTOSCALING   AUTOREPAIR   VERSION                              UPDATINGVERSION   UPDATINGCONFIG   MESSAGE

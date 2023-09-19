@@ -26,6 +26,6 @@ if [[ $? == 0 ]];then
 fi
 ```
 
-The script will create a folder under `/opt/srv`. This folder will contain the `images` for RHCOS provision in the worker nodes. To be more concrete we need the `RootFS` and `LiveISO` artifacts found in the Openshift CI Release page.
+The script will create a folder under `/opt/srv`. This folder will contain the `images` for RHCOS provision in the worker nodes. To be more concrete, we need the `RootFS` and `LiveISO` artifacts found on the Openshift CI Release page.
 
-After the download, a container will run to host the images under a webserver. It uses a variation of httpd official image which allows also to work with IPv6.
+After the download, a container will run to host the images under a webserver. It uses a variation of the official httpd image, which also allows it to work with IPv6.

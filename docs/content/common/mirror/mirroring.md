@@ -1,21 +1,25 @@
-The mirroring step usually takes some time to be addressed, so we recommend to start with this part once we have the Registry server up and running.
+The mirroring step can take some time to complete, so we recommend starting with this part once the Registry server is up and running.
 
-For this purpose we will use the `oc-mirror` tool, which is a binary that uses an object called `ImageSetConfiguration`.
+For this purpose, we will use the `oc-mirror` tool, a binary that utilizes an object called `ImageSetConfiguration`.
 
-In this file you can specify:
+In this file, you can specify:
 
-- The Openshift versions to mirror (they should be located in quay.io)
-- The additional operators to mirror selecting packages individually
-- The extra images you want to add to the repository
+- The OpenShift versions to mirror (they should be located in quay.io).
+- The additional operators to mirror, selecting packages individually.
+- The extra images you want to add to the repository.
 
-This is how looks like the `ImageSetConfiguration` that we will use for our mirroring:
+!!! note
+
+    Please ensure you modify the appropriate fields to align with your laboratory environment.
+
+Here is an example of the `ImageSetConfiguration` that we will use for our mirroring:
 
 ```yaml
 apiVersion: mirror.openshift.io/v1alpha2
 kind: ImageSetConfiguration
 storageConfig:
   registry:
-    imageURL: registry.hypershiftbm.lab:5000/openshift/release/metadata:latest ## CHANGE THIS!
+    imageURL: registry.hypershiftbm.lab:5000/openshift/release/metadata:latest
 mirror:
   platform:
     channels:
@@ -47,7 +51,7 @@ mirror:
     - name: metallb-operator
 ```
 
-Make sure you have your `${HOME}/.docker/config.json` file updated with the registries you try to mirror from and your private registry to push the images to.
+Make sure you have your `${HOME}/.docker/config.json` file updated with the registries you are trying to mirror from and your private registry to push the images to.
 
 After that, we can begin the mirroring process:
 
@@ -59,9 +63,9 @@ Once the mirror finishes, you will have a new folder called `oc-mirror-workspace
 
 ## Mirroring Nightly and CI releases
 
-The bad part in all of this, we cannot cover nightly or CI versions of Openshift so we will need to use the `oc adm release mirror` to mirror that versions.
+The bad part in all of this, we cannot cover nightly or CI versions of Openshift so we will need to use the `oc adm release mirror` to mirror those versions.
 
-To mirror the nightly versions we need for this deployment you need to execute this:
+To mirror the nightly versions we need for this deployment, you need to execute this:
 
 ```bash
 REGISTRY=registry.$(hostname --long):5000
@@ -72,11 +76,11 @@ oc adm release mirror \
   --to-release-image=${REGISTRY}/openshift/release-images:4.14.0-0.nightly-2023-08-29-102237
 ```
 
-For more detailed and updated information you can visit the official [Documentation](https://docs.openshift.com/container-platform/4.13/installing/disconnected_install/installing-mirroring-disconnected.html) or [GitHub repository](https://github.com/openshift/oc-mirror)
+For more detailed and updated information, you can visit the official [Documentation](https://docs.openshift.com/container-platform/4.13/installing/disconnected_install/installing-mirroring-disconnected.html) or [GitHub repository](https://github.com/openshift/oc-mirror)
 
 ## Mirror MCE internal releases
 
-In order to mirror all the MCE latests images uploaded to quay.io or if it's internally you can access to the ACM documentation.
+In order to mirror all the MCE latest images uploaded to quay.io or if it's internal and you can access the ACM documentation.
 
 - [Red Hat Official Documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.8/html/clusters/cluster_mce_overview#install-on-disconnected-networks)
 - Red Hat Internal deployment [Brew Registry deployment](https://github.com/stolostron/deploy/blob/master/docs/deploy-from-brew.md)

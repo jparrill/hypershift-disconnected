@@ -1,6 +1,6 @@
-This is mostly for development environments, in a production environments we need to create the proper rules for the firewalld service and the selinux policies to maintain the environment secure.
+This process is primarily intended for development environments. In production environments, it's essential to establish proper rules for the `firewalld` service and configure SELinux policies to maintain a secure environment.
 
-With those instructions we will allow all kinds of connections through the different virtual networks in the environment:
+With these instructions, we allow various types of connections through the different virtual networks within the environment:
 
 ```bash
 ## SELinux

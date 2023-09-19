@@ -1,6 +1,6 @@
-Firstly we need to make sure we have the right networks ready to be used in the Hypervisor. These networks will be used to host the Management and Hosted clusters.
+Firstly, we need to ensure that we have the right networks prepared for use in the Hypervisor. These networks will be used to host both the Management and Hosted clusters.
 
-To configure it we will use this `kcli` command:
+To configure these networks, we will use the following `kcli` command:
 
 ```
 kcli create network -c 2620:52:0:1305::0/64 -P dhcp=false -P dns=false --domain hypershiftbm.lab --nodhcp ipv6
@@ -14,7 +14,7 @@ Where:
 - `--domain` sets the domain to search into.
 - `ipv6` is the name of the network that will be created.
 
-This is how looks like the network once created:
+This is what the network will look like once created:
 
 ```
 [root@hypershiftbm ~]# kcli list network

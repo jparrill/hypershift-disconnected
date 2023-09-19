@@ -1,10 +1,10 @@
 !!! important
 
-    This section is only relevant in disconnected scenarios, if this is not your case, you can continue with the next section
+    This section is exclusively applicable to disconnected scenarios. If this does not apply to your situation, please proceed to the next section.
 
-In this section we will cover how to deploy a small self-hosted registry based in a podman container. In a production environment we recommend a more reliable solution like a Quay, Nexus or Artifactory.
+In this section, we will explain how to deploy a small, self-hosted registry using a Podman container. For production environments, we strongly recommend utilizing a more reliable solution such as Quay, Nexus, or Artifactory.
 
-The script will take some assumptions like the registry name based on the hypervisor hostname, the credentials and the user to access:
+The script will make certain assumptions, including the registry name based on the hypervisor hostname, as well as the necessary credentials and user access:
 
 - `registry.sh`
 ```bash
@@ -65,9 +65,9 @@ podman create --name registry --net host --security-opt label=disable --replace 
 systemctl enable --now registry
 ```
 
-It will use a systemd service, so if you need to manage it, you can use `systemctl status/start/stop registry`.
+It will utilize a systemd service for management purposes. So, if you ever need to manage it, you can employ systemctl status/start/stop registry.
 
-The root folder for the registry is located at `/opt/registry`, where:
+The root folder for the registry is situated at /opt/registry, and it's structured as follows:
 
 - `certs` holds the TLS certificates.
 - `auth` keeps the credentials.

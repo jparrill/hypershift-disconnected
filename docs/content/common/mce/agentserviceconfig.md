@@ -1,14 +1,15 @@
-This Agent Service Config object it's part of the Assisted Service addon included in MCE/ACM. It's in charge of the Baremetal cluster deployment and if the addon is enabled, you will need to deploy an operand (CRD) called `AgentServiceConfig` in order to configuring it.
+The Agent Service Config object is an essential component of the Assisted Service addon included in MCE/ACM, responsible for Baremetal cluster deployment. When the addon is enabled, you must deploy an operand (CRD) named `AgentServiceConfig` to configure it.
 
 ## Agent Service Config Objects
 
-The CRD is described [here](https://github.com/openshift/assisted-service/blob/master/docs/operator.md#creating-an-agentserviceconfig-resource) and we will focus on the main part to make it work in disconnected environments.
+You can find the CRD described [here](https://github.com/openshift/assisted-service/blob/master/docs/operator.md#creating-an-agentserviceconfig-resource). In this context, we will focus on the main aspects to ensure its functionality in disconnected environments.
 
-Also, to configure Multicluster Engine to work properly in a disconnected environment, we need to include some additional ConfigMaps.
+In addition to configuring the Agent Service Config, to ensure that Multicluster Engine functions properly in a disconnected environment, we need to include some additional ConfigMaps.
 
-### Custom Registries configuration
+### Custom Registries Configuration
 
-This ConfigMap contains the disconnected details to customize the deployment.
+This ConfigMap contains the disconnected details necessary to customize the deployment.
+
 
 ```yaml
 ---
@@ -42,11 +43,15 @@ data:
     ...
 ```
 
-This object includes 2 fields, the first one contains the CAs which will be loaded in the different processes of the deployment.
+This object includes two fields:
+
+1. **Custom CAs**: This field contains the Certificate Authorities (CAs) that will be loaded into the various processes of the deployment.
+2. **Registries**: The `Registries.conf` field contains information about images and namespaces that need to be consumed from a mirror registry instead of the original source registry.
 
 ### Assisted Service Customization
 
-This ConfigMap will be consumed by the Assisted Service operator and it contains variables which will modify the behaviour od the controllers.
+The Assisted Service Customization ConfigMap is consumed by the Assisted Service operator and contains variables that modify the behavior of the controllers.
+
 
 ```yaml
 ---
@@ -60,11 +65,11 @@ data:
   ALLOW_CONVERGED_FLOW: "false"
 ```
 
-The documentation about how to customize the operator is found [here](https://github.com/openshift/assisted-service/blob/master/docs/operator.md#specifying-environmental-variables-via-configmap)
+You can find documentation on how to customize the operator [here](https://github.com/openshift/assisted-service/blob/master/docs/operator.md#specifying-environmental-variables-via-configmap).
 
 ### Assisted Service Config
 
-This is the Assisted Service Config object which includes the necessary info to perform the right functioning of the operator.
+The Assisted Service Config object includes the necessary information to ensure the correct functioning of the operator.
 
 ```yaml
 ---
@@ -100,18 +105,18 @@ spec:
     version: 414.92.202308281054-0
 ```
 
-Here we will remark the important things
+In this section, we will emphasize the important aspects:
 
-- The `metadata.annotations["unsupported.agent-install.openshift.io/assisted-service-configmap"]` Annotation, will reference the ConfigMap name to be consumed by the operator to customize the behaviour.
-- The `spec.mirrorRegistryRef.name` points to the ConfigMap containing the disconnected registry info to be consumed by the Assisted Service Operator. It will inject those resources during the deployment process.
-- The `spec.osImages` field contains the different versions to be available for deployment by this operator. In this section we need to include the mentioned fields as a mandatory ones.
+- The `metadata.annotations["unsupported.agent-install.openshift.io/assisted-service-configmap"]` Annotation references the ConfigMap name to be consumed by the operator for customizing behavior.
+- The `spec.mirrorRegistryRef.name` points to the ConfigMap containing disconnected registry information to be consumed by the Assisted Service Operator. This ConfigMap injects these resources during the deployment process.
+- The `spec.osImages` field contains different versions available for deployment by this operator. These fields are mandatory.
 
-Let's fill this section for 4.14 dev preview ec4 version (sample):
+Let's fill in this section for the 4.14 dev preview ec4 version (sample):
 
 - [Release URL](https://amd64.ocp.releases.ci.openshift.org/releasestream/4-dev-preview/release/4.14.0-ec.4)
 - [RHCOS Info](https://releases-rhcos-art.apps.ocp-virt.prod.psi.redhat.com/?arch=x86_64&release=414.92.202307250657-0&stream=prod%2Fstreams%2F4.14-9.2#414.92.202307250657-0)
 
-Previously you need to download the RootFS and LiveIso files, but let's asume that we already did that:
+Assuming you've already downloaded the RootFS and LiveIso files:
 
 ```yaml
   - cpuArchitecture: x86_64
@@ -123,7 +128,7 @@ Previously you need to download the RootFS and LiveIso files, but let's asume th
 
 ## Deployment
 
-To deploy all the objects, we just need to put them all in the same file and apply them against the Management Cluster
+To deploy all these objects, simply concatenate them into a single file and apply them to the Management Cluster.
 
 ```bash
 oc apply -f agentServiceConfig.yaml
@@ -136,6 +141,8 @@ assisted-image-service-0                               1/1     Running   2      
 assisted-service-668b49548-9m7xw                       2/2     Running   5             11d
 ```
 
-The `Assisted Image Service` pod is in charge of the RHCOS Boot Image template creation, that will be customized with each cluster you will deploy.
+!!! note
 
-The `Assisted Service` is the operator.
+      The `Assisted Image Service` pod is responsible for creating the RHCOS Boot Image template, which will be customized for each cluster you deploy.
+
+      The `Assisted Service` refers to the operator.
