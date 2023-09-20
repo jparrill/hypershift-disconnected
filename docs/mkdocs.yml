@@ -45,6 +45,9 @@ markdown_extensions:
     alternate_style: true
 nav:
 - Home: index.md
+- 'Architecture':
+  - architecture/index.md
+  - 'Multicluster Engine and Agent': architecture/mce-and-agent.md
 - 'IPv4':
   - IPv4/index.md
   - 'Hypervisor':
