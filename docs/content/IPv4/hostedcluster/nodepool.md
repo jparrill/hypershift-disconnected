@@ -4,6 +4,10 @@ A `NodePool` is a scalable set of worker nodes associated with a HostedCluster. 
 
     Please ensure you modify the appropriate fields to align with your laboratory environment.
 
+!!! warning
+
+    Before a day-1 patch, the release image set in the HostedCluster **should use the digest rather than the tag**. (e.g `quay.io/openshift-release-dev/ocp-release@sha256:e3ba11bd1e5e8ea5a0b36a75791c90f29afb0fdbe4125be4e48f69c76a5c47a0`)
+
 This is how one looks like:
 
 ```yaml

@@ -142,6 +142,10 @@ This is a sample of the HostedCluster Object
     3a62961e6ed6edab46d5ec8429ff1f41d6bb68de51271f037c6cb8941a007fde
     ```
 
+    Another important consideration is:
+
+    The release image set in the HostedCluster **should use the digest rather than the tag**. (e.g `quay.io/openshift-release-dev/ocp-release@sha256:e3ba11bd1e5e8ea5a0b36a75791c90f29afb0fdbe4125be4e48f69c76a5c47a0`)
+
 ```yaml
 apiVersion: hypershift.openshift.io/v1beta1
 kind: HostedCluster
